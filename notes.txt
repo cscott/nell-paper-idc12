@@ -1,6 +1,9 @@
 Growing up with Nell: Narrative interfaces for Literacy
 
 Key ideas:
+ - Narrative
+ - Growable
+ - Direct interaction (tablet)
 
 Narrative/goal based.  Need a path through the educational material;
 kids are hardwired for plot as that path.
