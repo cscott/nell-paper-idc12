@@ -1,0 +1,5 @@
+Growing up with Nell: A Narrative Interface for Literacy
+========================================================
+
+This repository hosts the sources for my short paper submission to
+the [Interaction Design and Children 2012](http://dimeb.informatik.uni-bremen.de/idc2012/) conference on [Project Nell](http://wiki.laptop.org/go/Nell).
