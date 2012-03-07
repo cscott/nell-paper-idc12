@@ -1,0 +1,139 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+%
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+\documentclass{acm_proc_article-sp}
+
+\begin{document}
+
+\title{Growing up with Nell: Narrative Interfaces for Literacy}
+%\subtitle{Narrative Interfaces for Literacy}
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{1}
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+C. Scott Ananian\\
+\affaddr{One Laptop Per Child Foundation}\\
+\affaddr{222 Third Street}\\
+\affaddr{Cambridge, MA 02142}\\
+\email{cscott@laptop.org}
+%\and  % use '\and' if you need 'another row' of author names
+}
+\date{12 March 2012}
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+\maketitle
+
+\begin{abstract}
+We present Project Nell,%
+\footnote{We were inspired by the ``Young Lady's Illustrated
+Primer'' in the Neal Stephenson novel \textit{The Diamond Age}.
+Nell takes its name from that novel's protagonist, but could also be read as an
+acronym for ``Narrative Environment for Learning Learning'' (a nod to
+Seymour Papert).}
+tablet software to teach reading and writing to
+children far from educational infrastructure.  Nell is a modular
+narrative system with ``a low floor and no ceilings'': the design
+scales from teaching letter shapes to programming the system itself.
+
+Nell is the successor to the Sugar educational software developed by
+One Laptop per Child for their XO-1 laptop.  Nell targets the XO-3
+tablet, a sub-\$100 solar-powered tablet for the developing world.
+Experience with Sugar drove design choices for Nell.
+\end{abstract}
+
+% A category with the (minimum) three required fields
+\category{K.3.1}{Computers and Education}{Computer
+  Uses in Education}[computer-managed instruction]
+\category{I.2.7}{Artificial Intelligence}{Natural Language
+  Processing}[narrative interfaces]
+\category{H.5.2}{Information Interfaces and Presentation}{User
+  Interfaces}[narrative interfaces]
+\terms{Design, Human Factors}
+
+\keywords{Narrative interfaces, tablet computing, education, Nell}
+
+\section{Introduction}
+\section{The {\secit Body} of The Paper}
+\subsection{Type Changes and {\subsecit Special} Characters}
+\subsection{Math Equations}
+\subsection{Citations}
+Citations to articles \cite{bowman:reasoning, clark:pct, braams:babel, herlihy:methodology},
+conference
+proceedings \cite{clark:pct} or books \cite{salas:calculus, Lamport:LaTeX} listed
+in the Bibliography section of your
+article will occur throughout the text of your article.
+
+This article shows only the plainest form
+of the citation command, using \texttt{{\char'134}cite}.
+This is what is stipulated in the SIGS style specifications.
+No other citation format is endorsed.
+
+\section{Conclusions}
+This paragraph will end the body of this sample document.
+Remember that you might still have Acknowledgments or
+Appendices; brief samples of these
+follow.  There is still the Bibliography to deal with; and
+we will make a disclaimer about that here: with the exception
+of the reference to the \LaTeX\ book, the citations in
+this paper are to articles which have nothing to
+do with the present subject and are used as
+examples only.
+%\end{document}  % This is where a 'short' article might terminate
+
+%
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+\bibliography{sigproc}  % sigproc.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+% ACM needs 'a single self-contained file'!
+%
+\balancecolumns
+% That's all folks!
+\end{document}

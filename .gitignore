@@ -2,3 +2,6 @@
 *.bbl
 *.blg
 *.log
+paper.pdf
+paper.ps
+paper.dvi

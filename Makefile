@@ -1,3 +1,5 @@
+all: paper.pdf
+
 %.dvi: %.tex
 	latex $*
 	bibtex $*
@@ -9,4 +11,4 @@
 	ps2pdf $< $@
 
 clean:
-	$(RM) *.dvi
+	$(RM) *.dvi *.aux *.bbl *.blg *.log paper.pdf
