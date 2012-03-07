@@ -9,7 +9,7 @@
 
 \begin{document}
 
-\title{Growing up with Nell: Narrative Interfaces for Literacy}
+\title{Growing up with Nell: A Narrative Interface for Literacy}
 %\subtitle{Narrative Interfaces for Literacy}
 %
 % You need the command \numberofauthors to handle the 'placement
@@ -65,13 +65,13 @@ C. Scott Ananian\\
 \maketitle
 
 \begin{abstract}
-We present Project Nell,%
+Project Nell%
 \footnote{We were inspired by the ``Young Lady's Illustrated
 Primer'' in the Neal Stephenson novel \textit{The Diamond Age}.
 Nell takes its name from that novel's protagonist, but could also be read as an
 acronym for ``Narrative Environment for Learning Learning'' (a nod to
 Seymour Papert).}
-tablet software to teach reading and writing to
+is tablet software to teach reading and writing to
 children far from educational infrastructure.  Nell is a modular
 narrative system with ``a low floor and no ceilings'': the design
 scales from teaching letter shapes to programming the system itself.
@@ -93,40 +93,55 @@ Experience with Sugar drove design choices for Nell.
 
 \keywords{Narrative interfaces, tablet computing, education, Nell}
 
-\section{Introduction}
-\section{The {\secit Body} of The Paper}
-\subsection{Type Changes and {\subsecit Special} Characters}
-\subsection{Math Equations}
-\subsection{Citations}
-Citations to articles \cite{bowman:reasoning, clark:pct, braams:babel, herlihy:methodology},
-conference
-proceedings \cite{clark:pct} or books \cite{salas:calculus, Lamport:LaTeX} listed
-in the Bibliography section of your
-article will occur throughout the text of your article.
+\section{A Lesson from Nell}
+% tell a nell story up front
 
-This article shows only the plainest form
-of the citation command, using \texttt{{\char'134}cite}.
-This is what is stipulated in the SIGS style specifications.
-No other citation format is endorsed.
+\section{Key Ideas}
+% olpc context here?
+\cite{chang:tinkrbook, flores:uruguay, idb:peru}
+%context: english literacy, far from teachers & schools
+\subsection{Narrative}
+% excerpt of story model
+\subsection{Personal}
+% customization, renaming characters
+\subsection{Direct interaction}
+% handwriting as UI?
+% motor skills
+% photo of XO-3?
+\subsection{Growable (``no ceiling'')}
+% modular -- the story expands.
+% excerpt of TurtleScript
+% text read aloud initially
+
+\section{Technology}
+\subsection{Rule-based story modules}
+% rete algorithm, cite Riedl, etc.
+% programmable conflict resolution
+\subsection{Simple dialog with AIML}
+% eliza interactions, show fragment
+\subsection{Web technologies}
+% Javascript/HTML5
+% offline caching
+% turtles (almost) all the way down (turtlescript again)
+
+\section{Related work}
+\subsection{The Sugar Learning Environment}
+% Sugar
+%% customization
+%% path through the educational material?
+\subsection{Narrative computing}
+% Reidl
+\subsection{Storytelling}
+% TinkRBooks
 
 \section{Conclusions}
-This paragraph will end the body of this sample document.
-Remember that you might still have Acknowledgments or
-Appendices; brief samples of these
-follow.  There is still the Bibliography to deal with; and
-we will make a disclaimer about that here: with the exception
-of the reference to the \LaTeX\ book, the citations in
-this paper are to articles which have nothing to
-do with the present subject and are used as
-examples only.
-%\end{document}  % This is where a 'short' article might terminate
 
 %
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 \bibliographystyle{abbrv}
-\bibliography{sigproc}  % sigproc.bib is the name of the Bibliography in this case
+\bibliography{paper}  % paper.bib is the name of the Bibliography in this case
 % You must have a proper ".bib" file
 %  and remember to run:
 % latex bibtex latex latex

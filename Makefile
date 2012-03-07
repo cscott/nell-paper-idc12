@@ -10,5 +10,7 @@ all: paper.pdf
 %.pdf:	%.ps
 	ps2pdf $< $@
 
+paper.dvi: paper.bib
+
 clean:
 	$(RM) *.dvi *.aux *.bbl *.blg *.log paper.pdf
