@@ -1,0 +1,54 @@
+Growing up with Nell: Narrative interfaces for Literacy
+
+Key ideas:
+
+Narrative/goal based.  Need a path through the educational material;
+kids are hardwired for plot as that path.
+
+Tablet computing.  Develop motor skills.  Handwriting as UI.
+
+Magic Book: handwriting as UI, book talks to you, becomes the story of
+you.
+
+Customization: rename the characters, make up new ones.
+
+Modular: slot in new stories into the framework as you grow (serials),
+write your own stories and share them with friends.
+Stories == lesson plans.  "Teachers might feel more comfortable
+substituting "lesson plan" for "story module" in the rest of the
+paper."
+
+Interaction design for *Children*:
+ - handwriting recognition is not velocity based, does not depend on
+   fluency.
+ - children grow: growable design fundamental:
+   - at first there are lots of things to touch
+   - when you write letters you get told stories about the letters
+   - later on you can interact with handwritten words, later stories.
+
+Technology:
+  - rule-based story modules, rete algorithm for efficient chaining
+  - programmable conflict resolution.
+     - show fragment for alphabet game?
+
+  - AIML for simple interaction
+    - cite stories about hours-long Eliza interactions (Radiolab)
+    - aiml modules to give story-specific rules.
+      show fragment for adventure game?
+
+  - layered interface: nell avatar module on top on custom
+    applications.  music maker, for example. balloon help.
+
+  - Javascript/HTML5.  Heavy caching for offline use.  Turtles all the
+    way down.  Integrated story and code development
+    environments. ("growable")
+
+Text is read aloud.  (Older kids can turn this off.)
+
+Context: English literacy, or ESL literacy. (At least in initial
+stages.)
+
+Context: OLPC, Sugar.  Anecdote: lots of educational content, but no
+way through.  Statistics show that certain applications are heavily
+used *iff* there's a teacher who knows the application and can guide
+the kid.  Goal: do better where there is no teacher.
