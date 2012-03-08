@@ -65,9 +65,7 @@ C. Scott Ananian\\
 \maketitle
 
 \begin{abstract}
-Project Nell%
-
-is tablet software to teach reading and writing to
+Project Nell is tablet software to teach reading and writing to
 children far from educational infrastructure.  Nell is a modular
 narrative system with ``a low floor and no ceilings'': the design
 scales from teaching letter shapes to programming the system itself.
@@ -75,7 +73,9 @@ scales from teaching letter shapes to programming the system itself.
 Nell is the successor to the Sugar educational software developed by
 One Laptop per Child for their XO-1 laptop.  Nell targets the XO-3
 tablet, a sub-\$100 solar-powered tablet for the developing world.
-Experience with Sugar drove design choices for Nell.
+%Experience with Sugar drove design choices for Nell.
+
+\textbf{XXX REWRITE THE ABSTRACT XXX}
 \end{abstract}
 
 % A category with the (minimum) three required fields
@@ -112,18 +112,17 @@ photograph her red boots.
 \textit{``Very good!  You are a smart girl!''}
 
 As Rahel grows, the book asks her to trace not just letters, but whole
-words.   The books responses are written on the screen as it writes
+words.  The book's responses are written on the screen as it speaks
 them, and eventually she doesn't need to leave the sound on all the
-time to read what the Princess is saying.  Soon Rahel can write
-complete sentences in her special book, and the Princess will respond
-sometimes.  New stories teach her about music (by playing certain
-tunes she unlocks a dungeon door) and programming with blocks (a
-not-very-bright turtle needs her to tell him how to draw different
-shapes).  Rahel writes her own stories, which she shares with her
-far-away friends.
+time.  Soon Rahel can write complete sentences in her special book,
+and the Princess will respond sometimes.  New stories teach her about
+music (by playing certain tunes she unlocks a dungeon door) and
+programming with blocks (a not-very-bright turtle needs Princess Rahel's
+help to draw different shapes).  Rahel writes her own stories,
+which she shares with her friends.
 
 An older Rahel learns that the block language she used to talk with
-the turtle is actually used to write all the software running inside
+the turtle is also used to write all the software running inside
 her special book.  The stories Rahel writes can now include new
 functionality that make her book even more exciting for the kids
 just now opening their green meta books.
@@ -141,14 +140,30 @@ and is \textbf{Personalized} for, the child.
 We believe the combination of these four key ideas provides a novel
 experience which addresses some of the shortcomings of earlier
 learning environments for children.  In this section we will discuss
-our motivating core concepts, and in the next we will describe how
+our motivating concepts, and in the next we will describe how
 they are implemented in Nell.
 
 %Section~\ref{sec:related} discusses related work.
 %The final section will draw conclusions and describe future work.
 
-\subsection{Narrative}
+\subsection{Narrative Interface}
+
+Experience with our previous educational software
+system~\cite{flores:uruguay,idb:peru} has shown gratifying uptake and
+use by children.  But we are often disappointed that some of our
+favorite pedagogical tools included in the systems were not being
+widely used.  Enthusiastic teachers would spark intensive use in
+certain classrooms, but children had difficulty finding their way into
+the material without strong guidance.
+
+Children (like all humans) are hard-wired for
+stories~\cite{boyd:stories}.  Nell uses a
+\textit{Narrative Interface}~\cite{bizzocchi:narrative,don:narrative,laurel:computers} 
+to guide the child user through the pedagogical capabilities of the system.
+
 % excerpt of story model
+% not always a story -- kid can draw on their own and return to the
+% story; Nell will observe the free play and offer suggestions.
 \subsection{Personal}
 % customization, renaming characters
 \subsection{Direct interaction}
@@ -177,7 +192,7 @@ they are implemented in Nell.
 \section{Related work}\label{sec:related}
 % Nell focused on Literacy
 % olpc context here?
-\cite{chang:tinkrbook, flores:uruguay, idb:peru}
+\cite{chang:tinkrbook}
 %context: english literacy, far from teachers & schools
 \subsection{The Sugar Learning Environment}
 % Sugar
@@ -189,6 +204,12 @@ they are implemented in Nell.
 % TinkRBooks
 
 \section{Conclusions}
+
+\section{Acknowledgments}
+Nell's design evolved from experience with the Sugar system,
+architected by Walter Bender, and through stimulating discussions with
+Chris Ball and Angela Chang.  Michael Stone also contributed to an
+early implementation.
 
 %
 % The following two commands are all you need in the
