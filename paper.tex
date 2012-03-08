@@ -159,13 +159,42 @@ the material without strong guidance.
 Children (like all humans) are hard-wired for
 stories~\cite{boyd:stories}.  Nell uses a
 \textit{Narrative Interface}~\cite{bizzocchi:narrative,don:narrative,laurel:computers} 
-to guide the child user through the pedagogical capabilities of the system.
+to guide the child user through the pedagogical capabilities of the
+system.  All system actions are shaped by the storybook metaphor, and
+interactions with the system are conceptualized as interactions with
+one of the system protagonists.
 
-% excerpt of story model
+The overall system story is a multi-character serial adventure, taking
+cues from \textit{The Diamond Age} and
+from the UNIVERSE narrative-generation system \cite{lebowitz:universe}.
+Each character represents a specific skill or subject area, and each
+adventure represents about a year's curriculum.  This design also
+improves modularity and allows updates and decentralized authorship.
+
+As shown in figure~\ref{fig:nell}, Nell's characters are
+always-available agents running on top of a system ``activity''
+(application) which provides specialized functionality.  The agents
+are not always foregrounded; the child is always free to engage in
+constructionist play within the base activity.  The handwriting tutor is
+fundamentally a drawing activity; the adventure involving the magical
+musical lock is also a music-making activity.  The narrative system is
+hooked into the activity to provide passive guidance
+(congratulating the child when it notices they've drawn a letter),
+active guidance (Apple-Guide--style~\cite{powers:appleguide}
+contextual help), or system services (switch activities; jump into a
+related story module/lesson plan).
+
+% Story Module == Lesson Plan
+
 % not always a story -- kid can draw on their own and return to the
 % story; Nell will observe the free play and offer suggestions.
 \subsection{Personal}
 % customization, renaming characters
+
+Kids love to personalize stuff \textbf{[CITATION NEEDED]}.
+
+
+
 \subsection{Direct interaction}
 % handwriting as UI?
 % motor skills
@@ -180,6 +209,7 @@ to guide the child user through the pedagogical capabilities of the system.
 
 \section{Technology}
 \subsection{Rule-based story modules}
+% excerpt of story model
 % rete algorithm, cite Riedl, etc.
 % programmable conflict resolution
 \subsection{Simple dialog with AIML}
