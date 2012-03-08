@@ -55,3 +55,11 @@ Context: OLPC, Sugar.  Anecdote: lots of educational content, but no
 way through.  Statistics show that certain applications are heavily
 used *iff* there's a teacher who knows the application and can guide
 the kid.  Goal: do better where there is no teacher.
+------------
+Figures:
+1) kids with XO-1? (in "personalization" section?)
+2) photo of XO-3
+3) one nicely drawn rendering of Nell book?
+4) json story module fragment
+5) aiml n/s/e/w fragment
+6) turtle script fragment (corresponding to story module?)
