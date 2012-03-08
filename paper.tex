@@ -92,22 +92,23 @@ tablet, a sub-\$100 solar-powered tablet for the developing world.
 \section{A Lesson from Nell}
 
 % tell a nell story up front
-Miles from the nearest school, a young girl in Ethiopia turns on a
+Miles from the nearest school, a young Ethiopian girl turns on a
 tablet computer for the first time.  The solar-powered machine begins
 talking to her immediately: \textit{``Hello!  Would you like to hear a story?''}
 
-She listens intently to a story about a princess named Nell.  Later, when
-the girl has learned a little more, she will give the princess her own
-name, ``Rahel,'' and change all the colors, but for now the green
-book draws pictures for her and asks her to trace shapes on the screen.
+She nods and listens to a story about a princess.  Later, when
+the girl has learned a little more, she will tell the machine that the
+princess is named ``Rahel,'' like she is, and change all its
+colors---but for now the green book draws pictures of the unnamed Princess
+for her and asks her to trace shapes on the screen.
 
 \textit{``R is for Raven.  Can you trace the R?''}
 
 As she traces the R, it comes to life and gallops across the screen.
-\textit{``Run starts with R.  Roger the R Runs across the Red Rug.  He has a
+\textit{``Run starts with R.  Roger the R runs across the Red Rug.  Roger has a
 dog named Rover.''}  Rover barks: \textit{``Ruff! Ruff!''}  The Princess asks,
 \textit{``Can you find something Red?''} and Rahel uses the camera to
-photograph her red boots.
+photograph her new boots.
 
 \textit{``Very good!  You are a smart girl!''}
 
@@ -115,17 +116,17 @@ As Rahel grows, the book asks her to trace not just letters, but whole
 words.  The book's responses are written on the screen as it speaks
 them, and eventually she doesn't need to leave the sound on all the
 time.  Soon Rahel can write complete sentences in her special book,
-and the Princess will respond sometimes.  New stories teach her about
-music (by playing certain tunes she unlocks a dungeon door) and
-programming with blocks (a not-very-bright turtle needs Princess Rahel's
-help to draw different shapes).  Rahel writes her own stories,
+and sometimes the Princess will respond to them.  New stories teach her about
+music (she unlocks a dungeon door by playing certain tunes) and
+programming with blocks (Princess Rahel helps a not-very-bright turtle
+to draw different shapes).  Rahel writes her own stories about the Princess,
 which she shares with her friends.
 
 An older Rahel learns that the block language she used to talk with
 the turtle is also used to write all the software running inside
 her special book.  The stories Rahel writes can now include new
 functionality that make her book even more exciting for the kids
-just now opening their green meta books.
+just now receiving their own green meta books.
 
 \section{Key Ideas}
 The interaction design of the Nell system described above is inspired
@@ -137,11 +138,11 @@ Nell's design embodies four key ideas: it is a \textbf{Narrative}
 interface using \textbf{Direct Interaction} which \textbf{Grows} with,
 and is \textbf{Personalized} for, the child.
 
-We believe the combination of these four key ideas provides a novel
+We believe the combination of these four key concepts provides a novel
 experience which addresses some of the shortcomings of earlier
 learning environments for children.  In this section we will discuss
-our motivating concepts, and in the next we will describe how
-they are implemented in Nell.
+these four building blocks, and in the next section we will describe their
+implementation in Nell.
 
 %Section~\ref{sec:related} discusses related work.
 %The final section will draw conclusions and describe future work.
@@ -164,21 +165,24 @@ system.  All system actions are shaped by the storybook metaphor, and
 interactions with the system are conceptualized as interactions with
 one of the system protagonists.
 
-The overall system story is a multi-character serial adventure, taking
+Nell's overall story is a multi-character serial adventure, taking
 cues from \textit{The Diamond Age} and
-from the UNIVERSE narrative-generation system \cite{lebowitz:universe}.
-Each character represents a specific skill or subject area, and each
-adventure represents about a year's curriculum.  This design also
-improves modularity and allows updates and decentralized authorship.
+from the UNIVERSE narrative-generation system \cite{lebowitz:universe84}.
+Each of the several characters represents a specific skill or subject
+area, and each adventure represents about a year's curriculum.  This
+design also improves modularity and allows updates and decentralized
+authorship.
 
-As shown in figure~\ref{fig:nell}, Nell's characters are
-always-available agents running on top of a system ``activity''
+As illustrated in figure~\ref{fig:nell}, Nell's characters are
+always-available agents running on top of a particular system \textit{activity}
 (application) which provides specialized functionality.  The agents
-are not always foregrounded; the child is always free to engage in
-constructionist play within the base activity.  The handwriting tutor is
-fundamentally a drawing activity; the adventure involving the magical
-musical lock is also a music-making activity.  The narrative system is
-hooked into the activity to provide passive guidance
+are not always foregrounded: constructionist learning occurs when the
+child plays freely to ``make things'' with the base activity.
+The handwriting tutor is fundamentally a drawing activity; the
+adventure involving the magical musical lock is also a music-making activity.
+%  ``Making things'' is the key to constructionist learning.
+The narrative system is
+hooked into each activity to provide passive guidance
 (congratulating the child when it notices they've drawn a letter),
 active guidance (Apple-Guide--style~\cite{powers:appleguide}
 contextual help), or system services (switch activities; jump into a
@@ -194,22 +198,20 @@ related story module/lesson plan).
 Children often decorate their belongings, and the
 child owning a Nell system is encouraged to personalize it.
 Superficially, colors can be changed and characters can be renamed and
-dressed up.  But Nell also supports story personalization at a deeper
-level.
+dressed up.  But Nell also supports deeper story personalization.
 
-Choices the child has made are stored in an \textit{Avatar Services}
-module, accessible to all story modules and activities.  Past choices
+Choices the child has made are stored in \textit{Avatar Services},
+accessible to all story modules and activities.  Past choices
 can thus influence the future direction of a story.  Story module
-alternates are supported to allow learning material to presented in
+alternatives are supported to allow learning material to presented in
 different ways for different learners. Further, the record of a
 child's experiences with Nell are recorded in a \textit{Journal},
 which can be edited and customized by the user.  Careful arrangement
-of sections of the Journal can become a Portfolio \textbf{cite here}.
+of sections of the Journal can become a Portfolio~\cite{stefanakis:portfolios}.
 The journal also allows undo/redo \textbf{XXXX}.
 
 In the future, we expect to allow further personalization via deep
-recombination of story elements.  Lebowitz \textbf{PLANNING} and Riedl
-\textbf{PLANNING} show how a planner can be used to recombine story
+recombination of story elements.  Lebowitz~\cite{lebowitz:universe85} and Riedl~\cite{riedl:planning} show how a planner can be used to recombine story
 modules.  We expect to be less ambitious then previous work: instead
 of attempting to generate thousands of stories from tens of templates,
 we expect to modestly adapt from hundreds of story modules created
