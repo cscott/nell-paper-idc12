@@ -147,7 +147,7 @@ implementation in Nell.
 %Section~\ref{sec:related} discusses related work.
 %The final section will draw conclusions and describe future work.
 
-\subsection{Narrative Interface}
+\subsection{Narrative}
 
 Experience with our previous educational software
 system~\cite{flores:uruguay,idb:peru} has shown gratifying uptake and
@@ -192,7 +192,7 @@ related story module/lesson plan).
 
 % not always a story -- kid can draw on their own and return to the
 % story; Nell will observe the free play and offer suggestions.
-\subsection{Personalization}
+\subsection{Personalized}
 % customization, renaming characters
 
 Children often decorate their belongings, and the
@@ -229,19 +229,38 @@ expect to select and then modestly adapt from hundreds of story
 modules created in a decentralized manner by teachers---and eventually
 by the students themselves.
 
+\subsection{Growable}
+The Nell system aims to have a ``low floor and no ceiling.''  The low
+floor is a very simple base system, usable with no literacy skills or
+external guidance.  The system then grows with the child's expanding
+capabilities, serially accumulating story modules to tackle topics of
+increasing difficulty.  As mentioned before, the ability for third
+parties to independently author story modules is necessary to ensure
+Nell can continue to grow.  There should be no external dependencies
+limiting a child's ability to participate in this process: a Nell
+system should contain a story editor and everything necessary to
+author and publish story modules.
+
+We also seek to eliminate the ``ceiling'' between the children and
+the authors of the Nell system itself.  Nell should be capable of
+teaching about itself, and a capable child can dive into Nell's source
+code and make meaningful changes.  In section~\ref{sec:turtles} we
+describe how this goal is approached.
+
+% it has a ``low floor and no ceiling'' to allow a child to master more
+% and more of the system as she grows.
+% modular -- the story expands.
+% text read aloud initially
+
 \subsection{Direct interaction}
 % constructionist?
 % handwriting as UI?
 % motor skills
 % photo of XO-3?
+The Nell system is tied to its implementation on a tablet computer.
+It's no accident that the Nell system is instantiated on a tablet.
+XXX
 
-\subsection{Growable (``no ceiling'')}
-% it has a ``low floor and no ceiling'' to allow a child to master more
-% and more of the system as she grows.
-
-% modular -- the story expands.
-% excerpt of TurtleScript
-% text read aloud initially
 
 \section{Technology}
 \subsection{Rule-based story modules}
@@ -250,10 +269,11 @@ by the students themselves.
 % programmable conflict resolution
 \subsection{Simple dialog with AIML}
 % eliza interactions, show fragment
-\subsection{Web technologies}
+\subsection{Web technologies}\label{sec:turtles}
 % Javascript/HTML5
 % offline caching
 % turtles (almost) all the way down (turtlescript again)
+% excerpt of TurtleScript
 
 \section{Related work}\label{sec:related}
 % Nell focused on Literacy
