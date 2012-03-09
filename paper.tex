@@ -281,19 +281,120 @@ our literacy goals by allowing direct handwriting instruction and the
 use of handwriting as an interface.
 
 \section{Technology}
+We have begun implementation of the Nell system.  In this section we
+will describe the implementation of three of the most novel pieces
+from the software engineering side.  These are not necessarily the
+most novel-appearing from the user's perspective: for example, the
+handwriting UI is still fairly unusual in consumer devices, but the
+implementation of a separated-character handwriting recognition engine
+using Hidden Markov Models is well-understood.
+\textbf{SMOOTH THIS LANGUAGE}
+
 \subsection{Rule-based story modules}
+Narrative is the core of the Nell interface.  It is important that
+Nell's story be modular and extensible.  We use a rule-based story
+model with programmable conflict resolution to provide this ability.
+Figure~\ref{fig:rules} shows an excerpt of the story module driving
+the interaction described in the introduction to this paper.
+
+XXX stories consist of elements.  all elements contain preconditions,
+and actions.  cite PLANNER.
+
+In principle, all rules for all elements of all stories are evaluated
+continuously to determine the actions of the narrative agents.  This
+is made computationally efficient using the Rete
+algorithm~\cite{rete}.  The Rete algorithm requires that our
+conditions are in Normal Form\footnote{BE PRECISE HERE}, but actions
+can be arbitrarily complex.
+
+New story modules can be incorporated by visiting an internet page in
+connected deployments.  In a disconnected deployments, new stories
+might be distributed once a year on USB sticks, or shared from your
+friends.  In a classroom environment, a teacher can share stories for
+the day's lesson at the start of class.
+
+Story modules can be inherited and extended, as figure~\ref{fig:rules2}
+shows.  This makes it easy to take an existing story and modify it to
+better suit particular interests or a particular type of learner, or
+just to add variety.  This can lead to conflicts: multiple versions of
+a story, or multiple variant elements within a story, may have their
+preconditions satisfied simultaneously.
+
+We resolve conflicts...
+
+We have not yet implemented an integrated story editor within Nell,
+but we expect it to be roughly similar to the one implemented for
+Wide Ruled, which showed good learnability by inexperienced
+users~\cite{wideruled}.
+
 % excerpt of story model
 % rete algorithm, cite Riedl, etc.
 % programmable conflict resolution
-\subsection{Simple dialog with AIML}
+% cite the story editor from Wide Ruled
+
+\subsection{Extensible dialog with AIML}
+The child can interact with the Princess, and other agents within
+Nell, directly.  Convincing discourse is a hard problem, but
+reasonable approximations do not have to be difficult.  We leverage
+the AIML language developed for AliceBot~\cite{xxx}, which has
+won several Turing contests. \textbf{XXX more precise here XXX}
+\footnote{Anecdotal evidence shows that interactions with Eliza-style
+  responders can be rewarding: one woman spent hours each day
+  conversing with the original Eliza.~\cite{RadioLab}}
+
 % eliza interactions, show fragment
-\subsection{Web technologies}\label{sec:turtles}
+Each story module can include AIML fragments extending the
+conversational capabilities of Nell's agents.  Figure~\ref{fig:aiml}
+illustrates how this can be used to implement a traditional
+text adventure interaction for a particular story module.
+The child can write instructions such as, ``go north'', ``go
+east'', or ``open door'' for the agent.  These cause trigger events
+which the activity responds to to move the agent through the
+adventure---for example, by drawing the new location and causing
+the agent to describe it.
+
+% xx can the activity influence which commands are active?
+
+\subsection{TurtleScript}\label{sec:turtles}
+Nell's implementation leverages Web technologies, including HTML5,
+WebGL, and JavaScript, with extensive use of offline caching.
+Resources are named by URL, even when disconnected from the
+internet.  This allows third parties to manage their own namespaces
+when extending Nell, and simplifies updates to story modules and
+the Nell system itself.
+% if the kid's going to learn some software stack, this seem like a
+% fine one to learn
+
+As far as possible, Nell is implemented in JavaScript.  We have
+developed a block-oriented view of JavaScript, which we call
+TurtleScript~\cite{turtlescript}.  Combined with subsets of JavaScript
+for beginners, this allows us to use a single implementation language
+which scales from logo-like tasks all the way through the
+implementation of the entire Nell system itself.  TurtleScript's block
+view of JavaScript is isomorphic to the standard textual
+representation of code.  We have begun implementation of a full
+programming environment for TurtleScript which is naturally-suited to
+tablet machines.
+
+% XXX refer to TurtleScript excerpt in figure somewhere here.
+
+Our goal is to allow the child to eventually dig as far into Nell's
+implementation as their capabilities allow.  Although the operating system and
+the browser itself are inaccessible from the web platform, we can
+provide full access above that level.  The existence of meta-circular
+interpreters for JavaScript~\cite{narcissus} implies that we can
+expose the system all the way down to the programming language
+implementation.  Via TurtleScript, this code is all visible in a
+friendly block-based form.
+
 % Javascript/HTML5
 % offline caching
 % turtles (almost) all the way down (turtlescript again)
 % excerpt of TurtleScript
 
+
 \section{Related work}\label{sec:related}
+
 % Nell focused on Literacy
 % olpc context here?
 \cite{chang:tinkrbook}
