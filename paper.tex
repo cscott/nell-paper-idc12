@@ -327,15 +327,18 @@ model with programmable conflict resolution to provide this ability.
 Figure~\ref{fig:rules} shows an excerpt of the story module driving
 the interaction described in the introduction to this paper.
 
-XXX stories consist of elements.  all elements contain preconditions,
-and actions.  cite PLANNER.
+Stories consist of a sequence of \textit{scenes}, in addition to
+characters, locations, and activity information.  Scenes are ``goals''
+in the STRIPS formalism~\cite{strips}, and consist of
+action descriptions, preconditions, and effects.
+In principle, all preconditions for all scenes of all story modules
+are evaluated continuously to determine the actions of the narrative
+agents.  This is made computationally efficient using the Rete
+algorithm.  Dialog is expressed using Curveship-style
+templates~\cite{montfort:curveship}.
 
-In principle, all rules for all elements of all stories are evaluated
-continuously to determine the actions of the narrative agents.  This
-is made computationally efficient using the Rete
-algorithm~\cite{rete}.  The Rete algorithm requires that our
-conditions are in Normal Form\footnote{BE PRECISE HERE}, but actions
-can be arbitrarily complex.
+%  The Rete algorithm requires that our conditions are in Normal
+%  Form\footnote{BE PRECISE HERE}, but actions can be arbitrarily complex.
 
 New story modules can be incorporated by visiting an internet page in
 connected deployments.  In a disconnected deployments, new stories
@@ -343,8 +346,8 @@ might be distributed once a year on USB sticks, or shared from your
 friends.  In a classroom environment, a teacher can share stories for
 the day's lesson at the start of class.
 
-Story modules can be inherited and extended, as figure~\ref{fig:rules2}
-shows.  This makes it easy to take an existing story and modify it to
+Story modules can be inherited and extended, as shown in the figure.
+This makes it easy to take an existing story and modify it to
 better suit particular interests or a particular type of learner, or
 just to add variety.  This can lead to conflicts: multiple versions of
 a story, or multiple variant elements within a story, may have their
