@@ -292,36 +292,34 @@ using Hidden Markov Models is well-understood.
 \textbf{SMOOTH THIS LANGUAGE}
 
 \subsection{Rule-based story modules}
-\begin{figure*}
+\begin{figure}\small
 \begin{verbatim}
-{ world: {
-    id: "/nell.laptop.org/chapters/alphabet-book" // canonical URL for this module
+{ world: { // id gives canonical URL for this module
+    id: "/nell.laptop.org/chapters/alphabet-book"
     scene: "opening", // initial scene
-  }, actors: [
-    // these characters are common to different modules
-    { id: "user", type: "/nell.laptop.org/characters/user" },
-    { id: "princess", type: "/nell.laptop.org/characters/nell" }
-  ], scenes: [
-    { id: "opening", // http://nell.laptop.org/chapters/alphabet-book/scenes/opening
-      subject: "actors/princess", verb: "speak", object: "actors/user",
-      text: "Hello!  Would (o/2) like to hear a story?" },
+  }, scenes: [
+    { id: "opening", subject: "actors/princess",
+      verb: "speak", object: "actors/user",
+      text: "Hello! Would (o/2) like to hear a story?"
+    },
     { id: "story-1",
       cond: rule`At(opening) && Event(Chat, Yes)`,
-      subject: "actors/princess", verb: "speak", object: "actors/user",
+      subject: "actors/princess",
+      verb: "speak", object: "actors/user",
       text: "Once upon a time..." },
     ...
     { id: "r-drawn",
       cond: rule`Event(Activity, DrawR)`,
-      subject: "actors/princess", verb: "speak", object: "actors/user",
+      subject: "actors/princess",
+      verb: "speak", object: "actors/user",
       text: "Very good, (o/3)!",
       action: js`startAnimation("r-runs")` },
     ...
-  ]
-}
+  ], ... }
 \end{verbatim}
-\caption{Excerpt of JSON-formatted story module.  Some details (format
-  versioning, etc) have been elided).}\label{fig:rules}
-\end{figure*}
+\caption{Excerpt of story module.  JSON syntax has been extended with
+quasiquote~\cite{quasiquote}.}\label{fig:rules}
+\end{figure}
 Narrative is the core of the Nell interface.  It is important that
 Nell's story be modular and extensible.  We use a rule-based story
 model with programmable conflict resolution to provide this ability.
@@ -384,7 +382,7 @@ We leverage AIML~\cite{aiml:2005},%
 the markup language developed for AliceBot, three-time winner of the
 Loebner Prize, a restricted Turing Test competition for chat bots.
 
-\begin{figure}
+\begin{figure}\small
 \begin{verbatim}
 <aiml version="1.0">
 <category>
@@ -400,7 +398,7 @@ Loebner Prize, a restricted Turing Test competition for chat bots.
 <category>
  <pattern>NORTH</pattern>
  <template>
-  <javascript>FireEvent(Chat, "NORTH")</javascript>
+  <javascript>FireEvent(Chat, "North")</javascript>
  </template>
 </category>
 </aiml>
