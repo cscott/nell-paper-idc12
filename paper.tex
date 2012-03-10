@@ -6,6 +6,7 @@
 % you need to 'insert'  your .bbl file into your source .tex file so as to provide
 % ONE 'self-contained' source file.
 \documentclass{acm_proc_article-sp}
+\usepackage{url}
 
 \begin{document}
 
@@ -335,14 +336,26 @@ users~\cite{wideruled}.
 \subsection{Extensible dialog with AIML}
 The child can interact with the Princess, and other agents within
 Nell, directly.  Convincing discourse is a hard problem, but
-reasonable approximations do not have to be difficult.  We leverage
+reasonable approximations do not have to be difficult; even
+the rudimentary conversational abilities of ELIZA elicited hours of
+conversation~\cite{weizenbaum:power}.
+% her secretary is divulging her life story
+% asks him to leave the room so he could be alone with it
+% hours discussing her boyfriend.
+Nell's use as an interactive diary is enhanced by the child's
+collaboration in the fiction that Nell is intelligent---what
+Turkle~\cite{turkle:alone} calls the ``ELIZA effect.''
+
+\footnote{Wilcox identifies several shortcomings with the expressive
+  power of AIML, proposing ChatScript as a
+  replacement~\cite{wilcox:2010}.  At present AIML's community and
+  diversity of third-party implementations make it preferable.}
+
+  We leverage
 the AIML language developed for AliceBot~\cite{alicebotxxx}, which has
 won several Turing contests. \textbf{XXX more precise here XXX}
-\footnote{Anecdotal evidence shows that interactions with Eliza-style
-  responders can be rewarding: one woman spent hours each day
-  conversing with the original Eliza.~\cite{RadioLab}}
 
-% eliza interactions, show fragment
+% show fragment
 Each story module can include AIML fragments extending the
 conversational capabilities of Nell's agents.  Figure~\ref{fig:aiml}
 illustrates how this can be used to implement a traditional
@@ -350,7 +363,7 @@ text adventure interaction for a particular story module.
 The child can write instructions such as, ``go north'', ``go
 east'', or ``open door'' for the agent.  These cause trigger events
 which the activity responds to to move the agent through the
-adventure---for example, by drawing the new location and causing
+adventure---for example, by drawing the new location on the page and causing
 the agent to describe it.
 
 % xx can the activity influence which commands are active?
