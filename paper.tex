@@ -295,8 +295,9 @@ using Hidden Markov Models is well-understood.
 \begin{figure}\small
 \begin{verbatim}
 { world: { // id gives canonical URL for this module
-    id: "/nell.laptop.org/chapters/alphabet-book"
+    id: "/nell.laptop.org/chapters/alphabet-book",
     scene: "opening", // initial scene
+    inherit_from: "/nell.laptop.org/core/drawing_activity",
   }, scenes: [
     { id: "opening", subject: "actors/princess",
       verb: "speak", object: "actors/user",
