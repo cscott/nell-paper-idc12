@@ -94,10 +94,10 @@ tablet, a sub-\$100 solar-powered tablet for the developing world.
 \section{A Lesson from Nell}
 \begin{figure}
 \centering
-\epsfig{file=roger1.eps, height=1.5in} % width=3.2in
-\caption{Illustration of Nell's primary interface.}\label{fig:nell}
+\epsfig{file=xo3-3.eps, width=3.2in}
+\caption{Nell's solar-powered hardware platform.  The tablet design
+  allows for direct interaction.}\label{fig:xo3}
 \end{figure}
-
 % tell a nell story up front
 Miles from the nearest school, a young Ethiopian girl turns on a
 tablet computer for the first time.  The solar-powered machine begins
@@ -179,6 +179,12 @@ Each of the several characters represents a specific skill or subject
 area, and each adventure represents about a year's curriculum.  This
 design also improves modularity and allows updates and decentralized
 authorship.
+
+\begin{figure}
+\centering
+\epsfig{file=roger1.eps, height=1.5in} % width=3.2in
+\caption{Illustration of Nell's primary interface.}\label{fig:nell}
+\end{figure}
 
 As illustrated in figure~\ref{fig:nell}, Nell's characters are
 always-available agents layered above a particular system \textit{activity}
@@ -265,13 +271,6 @@ describe how this goal is approached.
 % motor skills
 % photo of XO-3?
 
-\begin{figure}
-\centering
-\epsfig{file=xo3-3.eps, width=3.2in}
-\caption{Nell's solar-powered hardware platform.  The tablet design
-  allows for direct interaction.}\label{fig:xo3}
-\end{figure}
-
 The constructionist learning philosophy emphasizes creation and
 tangible interaction.  Nell uses direct interaction on a tablet
 computer to maintain the child's connection to their work
@@ -293,6 +292,36 @@ using Hidden Markov Models is well-understood.
 \textbf{SMOOTH THIS LANGUAGE}
 
 \subsection{Rule-based story modules}
+\begin{figure*}
+\begin{verbatim}
+{ world: {
+    id: "/nell.laptop.org/chapters/alphabet-book" // canonical URL for this module
+    scene: "opening", // initial scene
+  }, actors: [
+    // these characters are common to different modules
+    { id: "user", type: "/nell.laptop.org/characters/user" },
+    { id: "princess", type: "/nell.laptop.org/characters/nell" }
+  ], scenes: [
+    { id: "opening", // http://nell.laptop.org/chapters/alphabet-book/scenes/opening
+      subject: "actors/princess", verb: "speak", object: "actors/user",
+      text: "Hello!  Would (o/2) like to hear a story?" },
+    { id: "story-1",
+      cond: rule`At(opening) && Event(Chat, Yes)`,
+      subject: "actors/princess", verb: "speak", object: "actors/user",
+      text: "Once upon a time..." },
+    ...
+    { id: "r-drawn",
+      cond: rule`Event(Activity, DrawR)`,
+      subject: "actors/princess", verb: "speak", object: "actors/user",
+      text: "Very good, (o/3)!",
+      action: js`startAnimation("r-runs")` },
+    ...
+  ]
+}
+\end{verbatim}
+\caption{Excerpt of JSON-formatted story module.  Some details (format
+  versioning, etc) have been elided).}\label{fig:rules}
+\end{figure*}
 Narrative is the core of the Nell interface.  It is important that
 Nell's story be modular and extensible.  We use a rule-based story
 model with programmable conflict resolution to provide this ability.
@@ -467,8 +496,8 @@ do initial deployments in Africa later this year.
 \section{Acknowledgments}
 Nell's design evolved from experience with the Sugar system,
 architected by Walter Bender, and through stimulating discussions with
-Chris Ball and Angela Chang.  Michael Stone also contributed to an
-early implementation.
+Chris Ball and Angela Chang.  Chris Ball and Michael Stone contributed
+to an implementation of the rule-based story model.
 
 %
 % The following two commands are all you need in the
