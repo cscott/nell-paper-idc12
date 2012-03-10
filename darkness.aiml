@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="1.0">
+
+<!-- "Cloak of Darkness" game implementation, by C. Scott Ananian. -->
+
+<!-- quirks: "put the cloak on the hook", some oddity in how "the <noun>"
+     is handled.  Should investigate.  Maybe a pyaiml bug?
+     We don't support the full set of synonyms for put/drop.
+     We don't allow you to pick up the cloak after you hang/drop it. -->
+
+<category>
+<pattern>DARKNESS</pattern>
+<template>
+<think>
+<set name="topic">DARKNESS</set>
+<set name="dark">YES</set>
+<set name="message">OK</set>
+<set name="havecloak">YES</set>
+<set name="wearingcloak">YES</set>
+<set name="cloakonhook">NO</set>
+</think>
+Hurrying through the rainswept November night, you're glad to see the bright
+lights of the Opera House. It's surprising that there aren't more people about
+but, hey, what do you expect in a cheap demo game...?
+<br/>
+<srai>XFOYER</srai>
+</template>
+</category>
+
+<topic name="DARKNESS">
+
+<category>
+<pattern>XWINGAME</pattern>
+<template>
+You have won!
+<think><set name="topic"></set></think>
+</template>
+</category>
+
+<category>
+<pattern>XLOSEGAME</pattern>
+<template>
+You have lost.
+<think><set name="topic"></set></think>
+</template>
+</category>
+
+<category>
+<pattern>QUIT</pattern>
+<template>
+Ok.  What do you want to talk about now?
+<think><set name="topic"></set></think>
+</template>
+</category>
+
+<category>
+<pattern>* PEG</pattern>
+<template><srai><star/> HOOK</srai></template>
+</category>
+
+<category>
+<pattern>* BRASS HOOK</pattern>
+<template><srai><star/> HOOK</srai></template>
+</category>
+
+<category>
+<pattern>* SMALL HOOK</pattern>
+<template><srai><star/> HOOK</srai></template>
+</category>
+
+<category>
+<pattern>* THE HOOK</pattern>
+<template><srai><star/> HOOK</srai></template>
+</category>
+
+<category>
+<pattern>* VELVET CLOAK</pattern>
+<template><srai><star/> CLOAK</srai></template>
+</category>
+
+<category>
+<pattern>* BLACK CLOAK</pattern>
+<template><srai><star/> CLOAK</srai></template>
+</category>
+
+<category>
+<pattern>* HANDSOME CLOAK</pattern>
+<template><srai><star/> CLOAK</srai></template>
+</category>
+
+<category>
+<pattern>* SATIN CLOAK</pattern>
+<template><srai><star/> CLOAK</srai></template>
+</category>
+
+<category>
+<pattern>* THE CLOAK</pattern>
+<template><srai><star/> CLOAK</srai></template>
+</category>
+
+<category>
+<pattern>* SAWDUST</pattern>
+<template><srai><star/> MESSAGE</srai></template>
+</category>
+
+<category>
+<pattern>* SCRAWLED MESSAGE</pattern>
+<template><srai><star/> MESSAGE</srai></template>
+</category>
+
+<category>
+<pattern>* THE MESSAGE</pattern>
+<template><srai><star/> MESSAGE</srai></template>
+</category>
+
+<category>
+<pattern>LOOK</pattern>
+<template><srai>LOOK <get name="location"/></srai></template>
+</category>
+
+<category>
+<pattern>XFOYER</pattern>
+<template>
+<think><set name="location">FOYER</set></think>
+Foyer of the Opera House
+
+<srai>LOOK</srai>
+</template>
+</category>
+
+<category>
+<pattern>LOOK FOYER</pattern>
+<template>
+You are standing in a spacious hall, splendidly decorated in red
+and gold, with glittering chandeliers overhead. The entrance from
+the street is to the north, and there are doorways south and west.
+</template>
+</category>
+
+<category>
+<pattern>XBAR</pattern>
+<template>
+<think><set name="location">BAR</set></think>
+<condition name="dark">
+<li value="NO">Foyer bar</li>
+<li>Darkness <think><set name="topic">INTHEDARK</set></think></li>
+</condition>
+
+<srai>LOOK</srai>
+</template>
+</category>
+
+<category>
+<pattern>LOOK BAR</pattern>
+<template>
+<condition name="dark">
+<li value="NO">
+The bar, much rougher than you'd have guessed after the opulence
+of the foyer to the north, is completely empty. There seems to
+be some sort of message scrawled in the sawdust on the floor.
+</li>
+<li>
+It is pitch dark, and you can't see a thing.
+</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>XCLOAKROOM</pattern>
+<template>
+<think><set name="location">CLOAKROOM</set></think>
+Cloakroom.
+<srai>LOOK</srai>
+</template>
+</category>
+
+<category>
+<pattern>LOOK CLOAKROOM</pattern>
+<template>
+The walls of this small room were clearly once lined with hooks,
+though now only one remains. The exit is a door to the east.
+<think><set name="it">the hook</set></think>
+</template>
+</category>
+
+<category><pattern>N</pattern><template><srai>NORTH</srai></template></category>
+<category><pattern>S</pattern><template><srai>SOUTH</srai></template></category>
+<category><pattern>E</pattern><template><srai>EAST</srai></template></category>
+<category><pattern>W</pattern><template><srai>WEST</srai></template></category>
+<category><pattern>GO *</pattern><template><srai><star/></srai></template></category>
+
+<category><pattern>X</pattern><template><srai>LOOK</srai></template></category>
+<category><pattern>L</pattern><template><srai>LOOK</srai></template></category>
+<category><pattern>X *</pattern><template><srai>EXAMINE <star/></srai></template></category>
+
+<category>
+<pattern>NORTH</pattern>
+<template>
+<condition name="location">
+<li value="FOYER">
+You've only just arrived, and besides, the weather outside
+seems to be getting worse.</li>
+<li value="BAR"><srai>XFOYER</srai></li>
+<li>Sorry, you can't go that way.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>SOUTH</pattern>
+<template>
+<condition name="location">
+<li value="FOYER"><srai>XBAR</srai></li>
+<li>Sorry, you can't go that way.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>EAST</pattern>
+<template>
+<condition name="location">
+<li value="CLOAKROOM"><srai>XFOYER</srai></li>
+<li>Sorry, you can't go that way.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>WEST</pattern>
+<template>
+<condition name="location">
+<li value="FOYER"><srai>XCLOAKROOM</srai></li>
+<li>Sorry, you can't go that way.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>EXAMINE ME</pattern>
+<template>
+As good-looking as ever.
+</template>
+</category>
+
+<category>
+<pattern>EXAMINE IT</pattern>
+<template><srai>EXAMINE <get name="it"/></srai></template>
+</category>
+
+<category>
+<pattern>EXAMINE HOOK</pattern>
+<template>
+<condition name="location">
+<li value="CLOAKROOM">
+It's just a small brass <set name="it">hook</set>,
+<condition name="cloakonhook">
+<li value="YES">with a cloak hanging on it.</li>
+<li>screwed to the wall.</li>
+</condition>
+</li>
+<li>What hook?</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>EXAMINE CLOAK</pattern>
+<template>
+<condition name="havecloak">
+<li value="YES">
+A handsome cloak, of velvet trimmed with satin, and slightly spattered with
+raindrops. Its blackness is so deep that it almost seems to suck light from the
+room.
+</li>
+<li>You don't have the cloak.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>EXAMINE MESSAGE</pattern>
+<template>
+<condition name="location">
+<li value="BAR">
+<condition name="message">
+<li value="TRAMPLED">
+The message has been carelessly trampled, making it difficult to read.
+You can just distinguish the words...
+<srai>XLOSEGAME</srai>
+</li>
+<li>
+The message, neatly marked in the sawdust, reads...
+<srai>XWINGAME</srai>
+</li>
+</condition>
+</li>
+<li>I don't see that here.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>READ MESSAGE</pattern>
+<template><srai>EXAMINE MESSAGE</srai></template>
+</category>
+
+<category>
+<pattern>READ THE MESSAGE</pattern>
+<template><srai>EXAMINE MESSAGE</srai></template>
+</category>
+
+<category>
+<pattern>INVENTORY</pattern>
+<template>
+You are carrying:
+<condition name="havecloak">
+<li value="YES">
+a velvet cloak
+<condition name="wearingcloak">
+<li value="YES">(being worn)</li>
+</condition>
+</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>REMOVE CLOAK</pattern>
+<template>
+<think><set name="it">the velvet cloak</set></think>
+<condition name="havecloak">
+<li value="YES">
+<condition name="wearingcloak">
+<li value="YES">
+You take off the velvet cloak.
+<think><set name="wearingcloak">NO</set></think>
+</li>
+<li>You're not wearing the velvet cloak.</li>
+</condition>
+</li>
+<li>You don't have the velvet cloak.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>TAKE THE * OFF</pattern>
+<template><srai>REMOVE <star/></srai></template>
+</category>
+
+<category>
+<pattern>TAKE OFF *</pattern>
+<template><srai>REMOVE <star/></srai></template>
+</category>
+
+<category>
+<pattern>TAKE * OFF</pattern>
+<template><srai>REMOVE <star/></srai></template>
+</category>
+
+<category>
+<pattern>HANG IT ON HOOK</pattern>
+<template><srai>XHANGUP <get name="it"/></srai></template>
+</category>
+
+<category>
+<pattern>HANG IT ON THE HOOK</pattern>
+<template><srai>XHANGUP <get name="it"/></srai></template>
+</category>
+
+<category>
+<pattern>HANG * ON HOOK</pattern>
+<template><srai>XHANGUP <star/></srai></template>
+</category>
+
+<category>
+<pattern>HANG * ON THE HOOK</pattern>
+<template><srai>XHANGUP <star/></srai></template>
+</category>
+
+<category>
+<pattern>PUT IT ON HOOK</pattern>
+<template><srai>XHANGUP <get name="it"/></srai></template>
+</category>
+
+<category>
+<pattern>PUT IT ON THE HOOK</pattern>
+<template><srai>XHANGUP <get name="it"/></srai></template>
+</category>
+
+<category>
+<pattern>PUT * ON HOOK</pattern>
+<template><srai>XHANGUP <star/></srai></template>
+</category>
+
+<category>
+<pattern>PUT * ON THE HOOK</pattern>
+<template><srai>XHANGUP <star/></srai></template>
+</category>
+
+<category>
+<pattern>XHANGUP CLOAK</pattern>
+<template>
+<condition name="location">
+<li value="CLOAKROOM">
+<condition name="havecloak">
+<li value="YES">
+<think>
+<set name="havecloak"><set name="wearingcloak"><set name="dark">NO</set></set></set>
+<set name="cloakonhook">YES</set>
+</think>
+You put the velvet cloak on the small brass hook.
+
+Your score has just gone up by one point.
+</li>
+<li>You don't have the cloak.</li>
+</condition></li>
+<li>This isn't the best place to leave a smart cloak lying around.</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>DROP CLOAK</pattern>
+<template>
+<condition name="location">
+<li value="CLOAKROOM">
+<condition name="havecloak">
+<li value="YES">
+<think>
+<set name="cloakonhook"><set name="havecloak"><set name="wearingcloak"><set name="dark">NO</set></set></set></set>
+</think>
+You drop the velvet cloak on the floor of the cloak room.
+</li>
+<li>You don't have the cloak.</li>
+</condition></li>
+<li>This isn't the best place to leave a smart cloak lying around.</li>
+</condition>
+</template>
+</category>
+
+<category><pattern>*</pattern><template>What?</template></category>
+
+</topic>
+
+<topic name="INTHEDARK">
+<category>
+<pattern>LOOK</pattern>
+<template>It is pitch dark, and you can't see a thing.</template>
+</category>
+
+<category><pattern>N</pattern><template><srai>NORTH</srai></template></category>
+<category><pattern>S</pattern><template><srai>SOUTH</srai></template></category>
+<category><pattern>E</pattern><template><srai>EAST</srai></template></category>
+<category><pattern>W</pattern><template><srai>WEST</srai></template></category>
+<category><pattern>GO *</pattern><template><srai><star/></srai></template></category>
+<category><pattern>X</pattern><template><srai>LOOK</srai></template></category>
+<category><pattern>L</pattern><template><srai>LOOK</srai></template></category>
+<category><pattern>X *</pattern><template><srai>EXAMINE <star/></srai></template></category>
+
+<category>
+<pattern>NORTH</pattern>
+<template>
+<think><set name="topic">DARKNESS</set></think>
+<srai>XFOYER</srai>
+</template>
+</category>
+
+<category><pattern>SOUTH</pattern><template><srai>XGOBLUNDER</srai></template></category>
+<category><pattern>EAST</pattern><template><srai>XGOBLUNDER</srai></template></category>
+<category><pattern>WEST</pattern><template><srai>XGOBLUNDER</srai></template></category>
+<category><pattern>UP</pattern><template><srai>XGOBLUNDER</srai></template></category>
+<category><pattern>DOWN</pattern><template><srai>XGOBLUNDER</srai></template></category>
+
+<category><pattern>XGOBLUNDER</pattern>
+<template>
+<think><set name="message">TRAMPLED</set></think>
+Blundering around in the dark isn't a good idea!
+</template>
+</category>
+
+<category><pattern>XSTUMBLE</pattern>
+<template>
+In the dark?  You could easily disturb something!
+<think>
+<condition name="message">
+<li value="ENDANGERED"><set name="message">TRAMPLED</set></li>
+<li><set name="message">ENDANGERED</set></li>
+</condition>
+</think>
+</template>
+</category>
+
+<category><pattern>EXAMINE *</pattern><template><srai>XSTUMBLE</srai></template></category>
+
+<category><pattern>*</pattern><template><srai>XSTUMBLE</srai></template></category>
+
+</topic>
+</aiml>
