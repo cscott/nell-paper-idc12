@@ -7,6 +7,7 @@
 % ONE 'self-contained' source file.
 \documentclass{acm_proc_article-sp}
 \usepackage{url}
+%\usepackage{listings}
 
 \begin{document}
 
@@ -333,7 +334,7 @@ users~\cite{wideruled}.
 % programmable conflict resolution
 % cite the story editor from Wide Ruled
 
-\subsection{Extensible dialog with AIML}
+\subsection{Extensible dialog}
 The child can interact with the Princess, and other agents within
 Nell, directly.  Convincing discourse is a hard problem, but
 reasonable approximations do not have to be difficult; even
@@ -354,19 +355,45 @@ We leverage AIML~\cite{aiml:2005},%
 the markup language developed for AliceBot, three-time winner of the
 Loebner Prize, a restricted Turing Test competition for chat bots.
 
+\begin{figure}
+\begin{verbatim}
+<aiml version="1.0">
+<category>
+ <pattern>GO *</pattern>
+ <template><srai><star/></srai></template>
+</category>
 
+<category>
+ <pattern>N</pattern>
+ <template><srai>NORTH</srai></template>
+</category>
+
+<category>
+ <pattern>NORTH</pattern>
+ <template>
+  <javascript>FireEvent(Chat, "NORTH")</javascript>
+ </template>
+</category>
+</aiml>
+\end{verbatim}
+\caption{An AIML fragment which recognizes the commands ``N'',
+  ``North'', and ``Go North''.}\label{fig:aiml}
+\end{figure}
 % show fragment
 Each story module can include AIML fragments extending the
 conversational capabilities of Nell's agents.  Figure~\ref{fig:aiml}
 illustrates how this can be used to implement a traditional
 text adventure interaction for a particular story module.
-The child can write instructions such as, ``go north'', ``go
-east'', or ``open door'' for the agent.  These cause trigger events
-which the activity responds to to move the agent through the
-adventure---for example, by drawing the new location on the page and causing
-the agent to describe it.
+The child can write instructions such as, ``go north,'' ``go
+east,'' or ``open door'' for the agent.  These trigger events
+handled by the story module to move the agent through the
+adventure---for example, by causing the activity to draw a
+new location, causing the agent to describe it, and shifting the
+AIML topic to enable vocabulary suitable for the new location.
 
 % xx can the activity influence which commands are active?
+% yes, by shifting the topic.  AIML should have a more flexible
+% topic system.
 
 \subsection{TurtleScript}\label{sec:turtles}
 Nell's implementation leverages Web technologies, including HTML5,
