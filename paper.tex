@@ -314,7 +314,8 @@ using Hidden Markov Models is well-understood.
   }, scenes: [
     { id: "opening", subject: "actors/princess",
       verb: "speak", object: "actors/user",
-      text: "Hello! Would (o/2) like to hear a story?"
+      text: "Hello! Would (o/2) like to hear a story?",
+      group: "/nell.laptop.org/core/story-intro-group",
     },
     { id: "story-1",
       cond: rule`At(opening) && Event(Chat, Yes)`,
@@ -346,7 +347,8 @@ in the STRIPS formalism~\cite{strips}, and consist of
 action descriptions, preconditions, and effects.
 In principle, all preconditions for all scenes of all story modules
 are evaluated continuously to determine the actions of the narrative
-agents.  This is made computationally efficient using the Rete
+agents.  This production rules system
+is made computationally efficient using the Rete
 algorithm.  Dialog is expressed using Curveship-style
 templates~\cite{montfort:curveship}.
 
@@ -363,10 +365,26 @@ Story modules can be inherited and extended, as shown in the figure.
 This makes it easy to take an existing story and modify it to
 better suit particular interests or a particular type of learner, or
 just to add variety.  This can lead to conflicts: multiple versions of
-a story, or multiple variant elements within a story, may have their
+a story, or variant scenes within a story, may have their
 preconditions satisfied simultaneously.
 
-We resolve conflicts...
+Conflicts are resolved by consulting a \textit{group} associated with
+each scene.  Each group has a default priority and names a scene to be
+invoked when a conflict exists; the actions associated with that scene
+will temporarily alter the priorities of the conflicting scenes to
+resolve the conflict.  For example, the \textit{story-intro-group}
+cited in the example defaults to a lower priority, such that
+continuing a story in progress is preferred to beginning a new scene.
+The resolution scene for \textit{story-intro-group} may be part of its
+own story: for example, it may bring us to the controls of a magic airship
+which allows us to pilot between locations corresponding to the
+various story continuations.  Selecting a destination location bumps
+the priority of the given scene allowing us to transition to it
+without further conflict.
+
+Other rule groups may invoke random selection, select between stories
+based on child preferences or curriculum, or (during development) flag
+an error to highlight an unexpected ambiguity.
 
 We have not yet implemented an integrated story editor within Nell,
 but we expect it to be roughly similar to the one implemented for
@@ -421,7 +439,8 @@ Loebner Prize, a restricted Turing Test competition for chat bots.
 </aiml>
 \end{verbatim}
 \caption{An AIML fragment which recognizes the commands ``N'',
-  ``North'', and ``Go North''.}\label{fig:aiml}
+  ``North'', and ``Go North''. The \verb|<srai>| tag invokes the
+  recognizer recursively.}\label{fig:aiml}
 \end{figure}
 % show fragment
 Each story module can include AIML fragments extending the
