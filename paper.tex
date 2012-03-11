@@ -143,8 +143,8 @@ world.
 % A category with the (minimum) three required fields
 \category{K.3.1}{Computers and Education}{Computer
   Uses in Education}[computer-managed instruction]
-\category{I.2.7}{Artificial Intelligence}{Natural Language
-  Processing}[narrative interfaces]
+%\category{I.2.7}{Artificial Intelligence}{Natural Language
+%  Processing}[narrative interfaces]
 \category{H.5.2}{Information Interfaces and Presentation}{User
   Interfaces}[narrative interfaces]
 \terms{Design, Human Factors}
@@ -229,7 +229,7 @@ the material without strong guidance.
 
 Children (like all humans) are hard-wired for
 stories~\cite{boyd:stories}.  Nell uses a
-\textit{Narrative Interface}~\cite{bizzocchi:narrative,don:narrative,laurel:computers} 
+\textit{Narrative Interface}~\cite{bizzocchi:narrative,don:narrative}
 to guide the child user through the pedagogical capabilities of the
 system.  All system actions are shaped by the storybook metaphor, and
 interactions with the system are conceptualized as interactions with
@@ -303,7 +303,7 @@ In the future, we expect to allow further narrative personalization
 via recombination of story elements.
 Lebowitz~\cite{lebowitz:universe85} and Riedl~\cite{riedl:planning}
 show how a planner can be used to recombine and adapt story fragments.
-In this we expect to be less ambitious than the cited work: instead of
+We have less ambition than the cited work: instead of
 attempting to generate thousands of stories from tens of templates, we
 expect to select and then modestly adapt from hundreds of story
 modules created in a decentralized manner by teachers---and eventually
@@ -391,8 +391,7 @@ using Hidden Markov Models is well-understood.
       subject: "actors/princess",
       verb: "speak", object: "actors/user",
       text: "Very good, (o/3)!",
-      action: js`startAnimation("r-runs")` },
-    ...
+      action: js`startAnimation("r-runs")` }, ...
   ], ... }
 \end{verbatim}
 \caption{Excerpt of story module.  JSON syntax has been extended with
@@ -471,14 +470,6 @@ Nell's use as an interactive diary is enhanced by the child's
 collaboration in the fiction that Nell is intelligent---what
 Turkle~\cite{turkle:alone} calls the ``ELIZA effect.''
 
-We leverage AIML~\cite{aiml:2005},%
-\footnote{Wilcox identifies several shortcomings with the expressive
-  power of AIML, proposing ChatScript as a
-  replacement~\cite{wilcox:2010}.  At present AIML's community and
-  diversity of third-party implementations make it preferable.}
-the markup language developed for AliceBot, three-time winner of the
-Loebner Prize, a restricted Turing Test competition for chat bots.
-
 \begin{figure}\small
 \begin{verbatim}
 <aiml version="1.0">
@@ -504,12 +495,21 @@ Loebner Prize, a restricted Turing Test competition for chat bots.
   \texttt{North}, and \texttt{Go North}. The \texttt{<srai>} tag invokes the
   recognizer recursively.}\label{fig:aiml}
 \end{figure}
-% show fragment
+
+We leverage AIML~\cite{aiml:2005},
+the markup language developed for the three-time Loebner Prize-winning
+AliceBot.%
+\footnote{Wilcox identifies several shortcomings with the expressive
+  power of AIML, proposing ChatScript as a
+  replacement~\cite{wilcox:2010}.  At present AIML's community and
+  diversity of third-party implementations make it preferable.}
 Each story module can include AIML fragments extending the
-conversational capabilities of Nell's agents.  Figure~\ref{fig:aiml}
-illustrates how this can be used to implement a traditional
+conversational capabilities of Nell's agents.
+
+Figure~\ref{fig:aiml}
+shows how this can be used to implement a traditional
 text adventure interaction for a particular story module.
-The child can write instructions such as, ``go north,'' ``go
+In this example the child can write instructions such as, ``go north,'' ``go
 east,'' or ``open door'' for the agent.  These trigger events
 handled by the story module to move the agent through the
 adventure---for example, by causing the activity to draw a
@@ -594,10 +594,14 @@ educational infrastructure.
 We are in the process of implementing the Nell system, and expect to
 do initial deployments in Africa later this year.
 
-\section{Acknowledgments}
-Nell's design evolved from experience with the Sugar system,
-architected by Walter Bender, and through stimulating discussions with
-the Sugar community and Angela Chang.
+% CSA: Acknowledge the below in the related work, rather than spending
+% space on a heading and a new section.
+
+%% \section{Acknowledgments}
+%% Nell's design evolved from experience with the Sugar system,
+%% architected by Walter Bender, and through stimulating discussions with
+%% the Sugar community and Angela Chang.
+
 %
 % The following two commands are all you need in the
 % initial runs of your .tex file to
