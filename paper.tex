@@ -8,7 +8,7 @@
 %\documentclass{acm_proc_article-sp}
 \documentclass[preprint]{sig-alternate}
 \usepackage{url}
-%\usepackage{listings}
+\usepackage{ifthen}\newboolean{noauthors}\setboolean{noauthors}{false}
 
 \begin{document}\toappear{}
 
@@ -39,6 +39,7 @@
 % without further effort on your part as the last section in
 % the body of your article BEFORE References or any Appendices.
 
+\ifthenelse{\boolean{noauthors}}{}{
 \numberofauthors{1}
 \author{
 % You can go ahead and credit any number of authors here,
@@ -60,6 +61,7 @@ Now at Akamai Technologies.}\\
 \affaddr{Cambridge, MA 02142}\\
 \email{\{cscott,cjb,mstone\}@laptop.org}
 %\and  % use '\and' if you need 'another row' of author names
+}
 }
 \date{12 March 2012}
 % Just remember to make sure that the TOTAL number of authors
