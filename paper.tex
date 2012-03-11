@@ -151,7 +151,7 @@ world.
 
 \keywords{Narrative interfaces, tablet computing, education, Nell}
 
-\section{A Lesson from Nell}
+\section{A Lesson from Nell} \label{sec:lesson}
 \begin{figure}
 \centering
 \epsfig{file=xo3-3.eps, width=3.2in}
@@ -359,14 +359,13 @@ our literacy goals by allowing direct handwriting instruction and the
 use of handwriting as an interface.
 
 \section{Technology}
-We have begun implementation of the Nell system.  In this section we
-will describe the implementation of three of the most novel pieces
-from the software engineering side.  These are not necessarily the
-most novel-appearing from the user's perspective: for example, the
-handwriting UI is still fairly unusual in consumer devices, but the
-implementation of a separated-character handwriting recognition engine
-using Hidden Markov Models is well-understood~\cite{hanshu:handwriting}.
-\textbf{SMOOTH THIS LANGUAGE}
+We describe the novel synthesis of technologies that makes up our current Nell
+prototype. Several of these technologies are well-established; a few (like
+``TurtleScript'') are novel.
+
+\subsection{Handwriting recognition}
+To support \textit{direct interaction}, we use a separated-character
+handwriting recognition engine based on Hidden Markov Models~\cite{hanshu:handwriting}.
 
 \subsection{Rule-based story modules}
 \begin{figure}\small
@@ -398,15 +397,14 @@ using Hidden Markov Models is well-understood~\cite{hanshu:handwriting}.
 \caption{Excerpt of story module.  JSON syntax has been extended with
 quasiquote~\cite{quasiquote}.}\label{fig:rules}
 \end{figure}
-Narrative is the core of the Nell interface.  It is important that
-Nell's story be modular and extensible.  We use a rule-based story
-model with programmable conflict resolution to provide this ability.
-Figure~\ref{fig:rules} shows an excerpt of the story module driving
-the interaction described in the introduction to this paper.
+To support Nell's \textit{modular narrative interface}, we use a rule-based
+story model with programmable conflict resolution. (Figure~\ref{fig:rules} shows
+an excerpt of the story module underlying the interaction described in
+Section~\ref{sec:lesson}.)
 
-Stories consist of a sequence of \textit{scenes}, in addition to
-characters, locations, and activity information.  Scenes are ``goals''
-in the STRIPS formalism~\cite{strips}, and consist of
+Stories consist of a sequence of \textit{scenes} plus information about
+characters, locations, and activities.  Scenes are ``goals''
+in the STRIPS formalism~\cite{strips} and consist of
 action descriptions, preconditions, and effects.
 In principle, all preconditions for all scenes of all story modules
 are evaluated continuously to determine the actions of the narrative
@@ -420,7 +418,7 @@ templates~\cite{montfort:curveship}.
 
 New story modules can be incorporated by visiting an internet page in
 connected deployments.  In disconnected deployments, new stories
-might be distributed once a year on USB sticks, or shared from your
+might be distributed once a year on USB sticks, or shared among
 friends.  In a classroom environment, a teacher can share stories for
 the day's lesson at the start of class.
 
