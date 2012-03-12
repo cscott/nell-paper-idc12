@@ -361,9 +361,10 @@ our literacy goals by allowing direct handwriting instruction and the
 use of handwriting as an interface.
 
 \section{Technology}
-We describe the novel synthesis of technologies that makes up our current Nell
-prototype. Several of these technologies are well-established; a few (like
-``TurtleScript'') are novel.
+Our implementation choices further our goals of modularity and
+decentralization.  Nell's implementation is open source and uses
+standard web technologies to broaden the contributor base.  In this
+section we describe the technologies that enable Nell's four key ideas.
 
 \subsection{Rule-based story modules}
 \begin{figure}\small
@@ -395,10 +396,11 @@ prototype. Several of these technologies are well-established; a few (like
 \caption{Excerpt of story module.  JSON syntax has been extended with
 quasiquote~\cite{quasiquote}.}\label{fig:rules}
 \end{figure}
-To support Nell's \textit{modular narrative interface}, we use a rule-based
-story model with programmable conflict resolution. (Fig.~\ref{fig:rules} shows
+To implement Nell's modular \textit{narrative interface}, we use a
+production rule system with programmable conflict resolution.
+Figure~\ref{fig:rules} shows
 an excerpt of the story module underlying the interaction described in
-Section~\ref{sec:lesson}.)
+Section~\ref{sec:lesson}.
 
 Stories consist of a sequence of \textit{scenes} plus information about
 characters, locations, and activities.  Scenes are ``goals''
