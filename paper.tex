@@ -340,7 +340,7 @@ Resources are named by URL, even when disconnected from the
 internet.  This allows third parties to manage their own namespaces
 when extending Nell, and simplifies updates to story modules and
 the Nell system itself.
-%As far as possible, Nell is implemented in JavaScript.  
+%As far as possible, Nell is implemented in JavaScript.
 % if the kid's going to learn some software stack, this seem like a
 % fine one to learn
 
@@ -542,14 +542,15 @@ suitable for the new location.
 \subsection{TurtleScript}\label{sec:turtles}
 
 We have developed a block-oriented view of JavaScript, which we call
-TurtleScript (Figure~\ref{fig:turtlescript}).  Combined with subsets of JavaScript
-for learners, this allows us to use TurtleScript as the single
+TurtleScript~\cite{turtlescript}.  This allows us to use
+the TurtleScript view of JavaScript as the single
 implementation language for Nell.  TurtleScript scales from Logo-like
-pedagogical tasks up to the implementation of TurtleScript and the
+pedagogical tasks (in subsets of the language) up to the
+implementation of TurtleScript and the
 Nell system itself.  TurtleScript's block view is isomorphic to
 JavaScript's standard textual
-representation, which preserves the code-reading skills of existing
-programmers.  We have begun implementation of a
+representation to preserve the code-reading skills of existing
+programmers (Figure~\ref{fig:turtlescript}).  We have begun implementation of a
 tablet programming environment for TurtleScript which uses
 drag-and-drop, direct interaction, and intelligent prompting to reduce
 text entry requirements.
@@ -558,7 +559,7 @@ text entry requirements.
 \begin{figure}
 \centering
 \epsfig{file=turtlescript.eps, height=1.5in}
-\caption{Factorial function in TurtleScript~\cite{turtlescript}.}\label{fig:turtlescript}
+\caption{Factorial function in TurtleScript.}\label{fig:turtlescript}
 \end{figure}
 
 TurtleScript allows the child to dig as far into Nell's implementation
