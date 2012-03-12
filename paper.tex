@@ -333,6 +333,18 @@ teaching about itself, and a capable child can dive into Nell's source
 code and make meaningful changes.  In section~\ref{sec:turtles} we
 describe how this goal is approached.
 
+%%% XXX INTEGRATE THIS SECTION XXX
+Nell is implemented in standard Web technologies, including HTML5,
+WebGL, and JavaScript, with extensive use of offline caching.
+Resources are named by URL, even when disconnected from the
+internet.  This allows third parties to manage their own namespaces
+when extending Nell, and simplifies updates to story modules and
+the Nell system itself.
+%As far as possible, Nell is implemented in JavaScript.  
+% if the kid's going to learn some software stack, this seem like a
+% fine one to learn
+
+
 % it has a ``low floor and no ceiling'' to allow a child to master more
 % and more of the system as she grows.
 % modular -- the story expands.
@@ -528,36 +540,35 @@ suitable for the new location.
 % topic system.
 
 \subsection{TurtleScript}\label{sec:turtles}
-Nell's implementation leverages Web technologies, including HTML5,
-WebGL, and JavaScript, with extensive use of offline caching.
-Resources are named by URL, even when disconnected from the
-internet.  This allows third parties to manage their own namespaces
-when extending Nell, and simplifies updates to story modules and
-the Nell system itself.
-% if the kid's going to learn some software stack, this seem like a
-% fine one to learn
 
-As far as possible, Nell is implemented in JavaScript.  We have
-developed a block-oriented view of JavaScript, which we call
-TurtleScript~\cite{turtlescript}.  Combined with subsets of JavaScript
-for beginners, this allows us to use a single implementation language
-which scales from logo-like tasks all the way through the
-implementation of the entire Nell system itself.  TurtleScript's block
-view of JavaScript is isomorphic to the standard textual
-representation of code.  We have begun implementation of a full
-programming environment for TurtleScript which is naturally-suited to
-tablet machines.
+We have developed a block-oriented view of JavaScript, which we call
+TurtleScript (Figure~\ref{fig:turtlescript}).  Combined with subsets of JavaScript
+for learners, this allows us to use TurtleScript as the single
+implementation language for Nell.  TurtleScript scales from Logo-like
+pedagogical tasks up to the implementation of TurtleScript and the
+Nell system itself.  TurtleScript's block view is isomorphic to
+JavaScript's standard textual
+representation, which preserves the code-reading skills of existing
+programmers.  We have begun implementation of a
+tablet programming environment for TurtleScript which uses
+drag-and-drop, direct interaction, and intelligent prompting to reduce
+text entry requirements.
 
 % XXX refer to TurtleScript excerpt in figure somewhere here.
+\begin{figure}
+\centering
+\epsfig{file=turtlescript.eps, height=1.5in}
+\caption{Factorial function in TurtleScript~\cite{turtlescript}.}\label{fig:turtlescript}
+\end{figure}
 
-Our goal is to allow the child to eventually dig as far into Nell's
-implementation as their capabilities allow.  Although the operating system and
-the browser itself are inaccessible from the web platform, we can
-provide full access above that level.  The existence of meta-circular
-interpreters for JavaScript~\cite{narcissus} implies that we can
-expose the system all the way down to the programming language
-implementation.  Via TurtleScript, this code is all visible in a
-friendly block-based form.
+TurtleScript allows the child to dig as far into Nell's implementation
+as their capabilities allow.  Although the operating system and the
+browser implementation remain inaccessible, incorporating a
+meta-circular interpreter for JavaScript (such as \cite{narcissus}) allows us
+to expose the system all the way down to the programming
+language implementation,
+% Via TurtleScript, this code is all visible in a
+% friendly block-based form.
 
 % Javascript/HTML5
 % offline caching
