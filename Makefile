@@ -17,7 +17,7 @@ all: paper.pdf
 	sam2p $< $@
 
 paper.dvi: paper.bib
-paper.dvi: xo3-4.eps roger1.eps turtlescript.eps
+paper.dvi: xo3-4.eps roger1.eps turtlescript-2.eps
 
 clean:
 	$(RM) *.dvi *.aux *.bbl *.blg *.log paper.pdf
