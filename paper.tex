@@ -460,17 +460,19 @@ non-technical story creators~\cite{skorupski:2009}.
 % cite the story editor from Wide Ruled
 
 \subsection{Extensible dialog}
-The child can directly interact with the Princess and other agents within
-Nell.  Convincing discourse is a hard problem, but
+Nell's use as an interactive diary and
+Portfolio~\cite{stefanakis:portfolios} is enhanced by the user's
+collaboration in the fiction that Nell is intelligent---what
+Turkle~\cite{turkle:alone} calls the ``ELIZA effect.''
+Convincing discourse is a hard problem, but
 reasonable approximations do not have to be difficult; even
 the rudimentary conversational abilities of ELIZA elicited hours of
 conversation~\cite{weizenbaum:power}.
 % her secretary is divulging her life story
 % asks him to leave the room so he could be alone with it
 % hours discussing her boyfriend.
-Nell's use as an interactive diary is enhanced by the child's
-collaboration in the fiction that Nell is intelligent---what
-Turkle~\cite{turkle:alone} calls the ``ELIZA effect.''
+We've chosen to allow the child to directly converse with the
+Princess and other agents within Nell.
 
 \begin{figure}\small
 \begin{verbatim}
@@ -498,25 +500,28 @@ Turkle~\cite{turkle:alone} calls the ``ELIZA effect.''
   recognizer recursively.}\label{fig:aiml}
 \end{figure}
 
-We leverage AIML~\cite{aiml:2005},
-the markup language developed for the three-time Loebner Prize-winning
+Our implementation extends AIML~\cite{aiml:2005},
+the markup language developed for the three-time Loebner Prize--winning
 AliceBot.%
 \footnote{Wilcox identifies several shortcomings with the expressive
   power of AIML, proposing ChatScript as a
   replacement~\cite{wilcox:2010}.  AIML's community and
-  diversity of third-party implementations make it preferable at present.}
+  diversity of third-party implementations make it our choice at present.}
 Each story module can include AIML fragments extending the
 conversational capabilities of Nell's agents.
 
-Fig.~\ref{fig:aiml}
-shows how this can be used to implement a traditional
-text adventure interaction for a particular story module.
-In this example the child can write instructions such as, ``go north,'' ``go
-east,'' or ``open door'' for the agent.  These trigger events
-handled by the story module to move the agent through the
-adventure---for example, by causing the activity to draw a
-new location, causing the agent to describe it, and shifting the
-AIML topic to enable vocabulary suitable for the new location.
+Figure~\ref{fig:aiml}
+shows an AIML fragment augmenting an agent with
+commands suitable for a text adventure story module.
+In such a story the child might write instructions such as
+\texttt{go north}, \texttt{go east}, or \texttt{open door} in
+addition to usual agent dialog.
+These new commands fire events which are referenced by scene
+preconditions.  For example, \texttt{north} may
+trigger a scene which causes the activity to draw a new location on
+the page, causes the agent to write and speak a description of the new
+location, and which shifts the AIML topic to enable additional vocabulary
+suitable for the new location.
 
 % xx can the activity influence which commands are active?
 % yes, by shifting the topic.  AIML should have a more flexible
