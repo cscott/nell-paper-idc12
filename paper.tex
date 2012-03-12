@@ -9,6 +9,7 @@
 \documentclass[preprint]{sig-alternate}
 \usepackage{url}
 \usepackage{ifthen}\newboolean{noauthors}\setboolean{noauthors}{true}
+\hyphenation{Web-GL Java-Script Turtle-Script infra-structure}
 
 \begin{document}\toappear{}
 
@@ -163,7 +164,7 @@ new tablet computer. The solar-powered machine speaks to her:
 \textit{``Hello!  Would you like to hear a story?''}
 
 She nods and listens to a story about a princess.  Later, when
-the Rahel has learned a little more, she will tell the machine that the
+the girl has learned a little more, she will tell the machine that the
 princess is named ``Rahel'' like she is and that she likes to wear blue---but
 for now the green book draws pictures of the unnamed Princess for
 her and asks her to trace shapes on the screen.
@@ -221,9 +222,10 @@ pedagogical activities neglected because children had difficulty
 finding their way into the material without an enthusiastic teacher's
 guidance.  In response, Nell uses a
 \textit{Narrative Interface}~\cite{bizzocchi:narrative,don:narrative}
-to pave a path for the child user through the pedagogical content.
-In this interface, all system actions are shaped by a storybook metaphor, and
-interactions with the system are conceptualized as interactions with one of the
+to pave a path for the child user through the learning material.
+In the narrative interface, all system actions are shaped by a
+storybook metaphor, and
+interactions with the system are framed as interactions with one of the
 system protagonists.
 
 Nell's overall story is a multi-character serial adventure, taking
@@ -270,7 +272,7 @@ goals and rewards.
 % changing colors.  (Also incorporate learning style stuff into
 % section 1.)  Move color changing into Related Work, even?
 
-Children learn in different ways.  Nell provides multiple alternative
+Children learn in different ways.  Nell provides multiple
 story modules for its plot points/lessons to engage the child's
 interests and cater to multiple intelligences~\cite{gardner:mi}.
 Selecting between the alternatives can depend on either explicit
@@ -278,11 +280,11 @@ choices made by the child (``fractions in outer space,'' if the child
 chose a space-themed story or previously indicated an interest in space)
 or prior success with a given
 lesson style (a large number of accomplishments in musical-rhythmic
-tasks suggests taking a rhythmic approach to fractions).  Similarly, several
+tasks suggests a rhythmic approach to fractions).  Similarly, several
 different achievements can coexist, rewarding different ways of
 accomplishing the same pedagogical goal.
 
-This record of past choices and accomplishments is stored in a
+The record of past choices and accomplishments is stored in a
 \textit{Journal} and can be reviewed by the child.  The contents of the
 Journal can be rearranged to create a Portfolio~\cite{stefanakis:portfolios}
 demonstrating the child's progress.
@@ -290,10 +292,10 @@ In order to encourage fearless play and experimentation, the Journal
 also supports pervasive undo; the child can rewind and replay the
 narrative starting at any past point in the journal.
 
-Content can also be remixed for further personalization.
+Content can be remixed for further personalization.
 The child is encouraged to rename characters and change clothing,
 colors, and other superficial details.  In the future
-we expect to allow further narrative customization by
+we expect to accomplish further narrative customization by
 recombination of story elements.
 Lebowitz~\cite{lebowitz:universe85} and Riedl~\cite{riedl:planning}
 show how a planner can be used to recombine and adapt story fragments.
@@ -333,21 +335,21 @@ proficiency, the serial story moves on to more advanced topics.
 
 Second, Nell seeks to grow its authoring community.  Decentralized
 authorship ensures that Nell's instructional content
-will continue to grow, with an increasing number of topics and
+continues to increase its topics and
 customizations.  There are no
-ceilings barring a child from participating: Nell
+ceilings between children and teachers: Nell
 contains a story editor and everything necessary to
 author and publish story modules.
 
-To further promote collaboration
-Nell is implemented in standard Web technologies (HTML5,
-WebGL, and JavaScript) with offline caching.
+To further promote collaboration,
+Nell is free and open source and implemented in standard web
+technologies (WebGL, HTML5, and JavaScript) with offline caching.
 Resources are named by URL, even when disconnected from the
 internet, which simplifies the distribution of updates to story modules and
-the Nell system.  URL-based naming allows third parties
+the Nell system.  URL-based identifiers also allow third parties
 to manage their own namespaces when extending Nell.
 
-Finally, Nell is designed to allow a capable child to learn
+Finally, Nell is designed to allow a capable child to learn about
 the construction of the system itself,
 eliminating the ceiling between the child and
 the authors of the Nell system.  Nell can teach
@@ -392,9 +394,13 @@ our literacy goals by allowing direct handwriting instruction and
 development of motor skills.
 
 \section{Technology}
-Our technology choices further our goals of modularity and
-decentralization.  Nell's implementation is free and open source and uses
-standard web technologies to broaden the contributor base.  In this
+%Our technology choices further our goals of modularity and
+%decentralization.  Nell's implementation is free and open source and uses
+%standard web technologies to broaden the contributor base.  In this
+%section we describe the technologies that enable Nell's four key ideas.
+
+Our implementation choices further our goals of modularity and
+decentralization.  In this
 section we describe the technologies that enable Nell's four key ideas.
 
 \subsection{Rule-based story modules}
@@ -427,7 +433,7 @@ section we describe the technologies that enable Nell's four key ideas.
 \caption{Excerpt of story module.  JSON syntax has been extended with
 quasiquote~\cite{quasiquote}.}\label{fig:rules}
 \end{figure}
-To implement Nell's modular \textit{narrative interface}, we use a
+To implement Nell's modular narrative interface, we use a
 production rule system with programmable conflict resolution.
 Figure~\ref{fig:rules} shows
 an excerpt of the story module underlying the interaction described in
@@ -467,23 +473,23 @@ invoked when a conflict exists; the actions associated with that scene
 will (eventually) alter the priorities of the conflicting scenes to
 resolve the conflict.  The resolution scene may include any number of
 actions.  It may select randomly among the conflicting scenes or base
-its selection on
-child preferences, curriculum progress, or inferred learning style.
+its selection on the
+child's preferences, curriculum progress, or inferred learning style.
 The resolution scene may even initiate a new multi-scene story.
 
 For example, the \textit{story-intro-group}
 used in Figure~\ref{fig:rules} defaults to a low priority so that
-continuing a story in progress is preferred over starting a new story.
+continuing a story in progress is preferred above starting a new story.
 When a story module is completed, several new story openings will be in
-conflict.  The resolution scene for \textit{story-intro-group} brings us
-to the controls of a magic airship which flies between locations
+conflict.  The resolution scene for \textit{story-intro-group} may bring us
+to the controls of an airship which flies between locations
 corresponding to the various story continuations.  In that set of
 scenes, the child may eventually decide to fly to Mathland to hear the
 next episode in her agent Mathis' adventure, which would bump up the
-appropriate episode's priority to allow us to make the transition
+appropriate scene's priority to allow us to make the transition
 without further conflict.
 
-Nell will also include an integrated story editor.  Our exemplar is
+Nell will include an integrated story editor.  Our exemplar is
 the Wide Ruled authoring tool, which was successfully used by
 non-technical story creators~\cite{skorupski:2009}.
 
@@ -494,7 +500,7 @@ non-technical story creators~\cite{skorupski:2009}.
 
 \subsection{Extensible dialog}
 Nell's use as an interactive diary and
-Portfolio~\cite{stefanakis:portfolios} is enhanced by the user's
+\textit{portfolio}~\cite{stefanakis:portfolios} is enhanced by the child's
 collaboration in the fiction that Nell is intelligent---what
 Turkle~\cite{turkle:alone} calls the ``ELIZA effect.''
 Convincing discourse is a hard problem, but
@@ -553,7 +559,7 @@ These new commands fire events which are referenced by scene
 preconditions.  For example, \texttt{north} may
 trigger a scene which causes the activity to draw a new location on
 the page, causes the agent to write and speak a description of the new
-location, and which causes a shift in the AIML \textit{topic} to
+location, and finally causes a shift in the AIML \textit{topic} to
 enable additional vocabulary suitable for the new location.
 
 % xx can the activity influence which commands are active?
@@ -564,7 +570,7 @@ enable additional vocabulary suitable for the new location.
 
 We have developed a block-oriented view of JavaScript, which we call
 TurtleScript~\cite{turtlescript}.
-The TurtleScript view of JavaScript is the single
+The TurtleScript dialect of JavaScript is the single
 implementation language for Nell.  TurtleScript scales from Logo-like
 pedagogical tasks (in subsets of the language) up to the
 implementation of TurtleScript and the
@@ -603,16 +609,17 @@ language implementation.
 \section{Related work}\label{sec:related}
 
 The TinkRBook system~\cite{chang:tinkrbook} shares a similar focus on
-personalization and literacy.  Nell attempts to scale up these
-ideas with a modular extensible narrative system and a broader range
+personalization and literacy.  Nell attempts to scale the system up
+with a modular extensible narrative system and a broader range
 of pedagogic material.
 
 The Sugar Learning Platform~\cite{sugar} is an earlier effort at
-child education which we've been directly involved in.  Nell's focus is
-on children even further from educational infrastructure than those
+child education in which we've been directly involved.  Nell's focus is
+on children further from educational infrastructure than those
 targeted by Sugar.
-The narrative at Nell's core attempts to provide students additional
-pedagogical guidance, and the direct interaction model avoids keyboard
+The narrative at Nell's core attempts to provide students
+pedagogical guidance missing from Sugar,
+and the direct interaction model avoids keyboard
 problems which have plagued Sugar's initial deployments.  Nell also
 attempts to provide a greater sense of ownership through pervasive
 customization.
@@ -631,14 +638,14 @@ customization.
 Automatic narrative generation has seen attention in
 gaming, simulation, and training contexts~\cite{riedl:2008}.
 We believe
-Nell's use of these ideas in a pedagogical context is unique.
+Nell's synthesis of these ideas in a pedagogical context is unique.
 
 \section{Conclusions}
 We have described the design of a novel narrative direct-interface
-system for teaching literacy, which is personalized for and grows with
+system for education, beginning with literacy, which is personalized for and grows with
 its child owner.  Personalized direct interface engages the child, and
-narrative guides them through the pedagogic material.  The low-cost
-solar-powered deployment hardware allows Nell to reach further into the
+narrative guides them through pedagogic material.  Low-cost
+solar-powered hardware allows Nell to reach further into the
 least-developed areas of the world to help those without traditional
 educational infrastructure.
 
