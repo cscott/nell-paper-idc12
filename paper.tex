@@ -330,8 +330,8 @@ author and publish story modules.
 We also seek to eliminate the ``ceiling'' between the children and
 the authors of the Nell system itself.  Nell should be capable of
 teaching about itself, and a capable child can dive into Nell's source
-code and make meaningful changes.  In section~\ref{sec:turtles} we
-describe how this goal is approached.
+code and make meaningful changes.
+%In Section~\ref{sec:turtles} we describe how this goal is approached.
 
 %%% XXX INTEGRATE THIS SECTION XXX
 Nell is implemented in standard Web technologies, including HTML5,
@@ -365,16 +365,17 @@ the Nell system itself.
 The constructionist learning philosophy emphasizes creation and
 tangible interaction.  Nell uses direct interaction on a tablet
 computer to maintain the child's connection to their work
-(Figure~\ref{fig:xo3}).
+(Figure~\ref{fig:xo3}).  In particular, Nell uses handwriting
+recognition as a primary interface.
 
 The direct interaction model lowers the floor by eliminating the need
 to learn an abstract touchpad or mouse interface.  It also supports
-our literacy goals by allowing direct handwriting instruction and the
-use of handwriting as an interface.
+our literacy goals by allowing direct handwriting instruction and
+development of motor skills.
 
 \section{Technology}
-Our implementation choices further our goals of modularity and
-decentralization.  Nell's implementation is open source and uses
+Our technology choices further our goals of modularity and
+decentralization.  Nell's implementation is free and open source and uses
 standard web technologies to broaden the contributor base.  In this
 section we describe the technologies that enable Nell's four key ideas.
 
@@ -435,7 +436,7 @@ might be distributed once a year on USB sticks or shared among
 friends.  In a classroom environment, a teacher can share stories for
 the day's lesson at the start of class.
 
-Story modules can be inherited and extended, as shown in the figure.
+Story modules can be inherited and extended.
 This makes it easy to take an existing story and modify it to
 better suit particular interests, a particular type of learner---or
 just to add variety.  This can lead to conflicts: multiple versions of
@@ -447,23 +448,25 @@ each scene.  Each group has a default priority and names a scene to be
 invoked when a conflict exists; the actions associated with that scene
 will (eventually) alter the priorities of the conflicting scenes to
 resolve the conflict.  The resolution scene may include any number of
-actions.  It may select randomly, or based a selection on
+actions.  It may select randomly among the conflicting scenes or base
+its selection on
 child preferences, curriculum progress, or inferred learning style.
 The resolution scene may even initiate a new multi-scene story.
 
 For example, the \textit{story-intro-group}
 used in Figure~\ref{fig:rules} defaults to a low priority so that
 continuing a story in progress is preferred over starting a new story.
-When the story in progress is complete, several new story openers will be in
+When a story module is completed, several new story openings will be in
 conflict.  The resolution scene for \textit{story-intro-group} brings us
 to the controls of a magic airship which flies between locations
-corresponding to the various story continuations.  Eventually the
-child decides to fly to Mathland to hear the next episode in her
-agent Mathis' adventure, and that episode's priority is bumped to
-allow us to transition to it without further conflict.
+corresponding to the various story continuations.  In that set of
+scenes, the child may eventually decide to fly to Mathland to hear the
+next episode in her agent Mathis' adventure, which would bump up the
+appropriate episode's priority to allow us to make the transition
+without further conflict.
 
-We plan to write an integrated story editor for Nell.  Our model will
-be the Wide Ruled authoring tool, which was successfully used by
+Nell will also include an integrated story editor.  Our exemplar is
+the Wide Ruled authoring tool, which was successfully used by
 non-technical story creators~\cite{skorupski:2009}.
 
 % excerpt of story model
@@ -513,7 +516,7 @@ Princess and other agents within Nell.
 \end{figure}
 
 Our implementation extends AIML~\cite{aiml:2005},
-the markup language developed for the three-time Loebner Prize--winning
+the markup language developed for the Loebner Prize--winning
 AliceBot.%
 \footnote{Wilcox identifies several shortcomings with the expressive
   power of AIML, proposing ChatScript as a
@@ -527,13 +530,13 @@ shows an AIML fragment augmenting an agent with
 commands suitable for a text adventure story module.
 In such a story the child might write instructions such as
 \texttt{go north}, \texttt{go east}, or \texttt{open door} in
-addition to usual agent dialog.
+addition to the usual dialog with the agent.
 These new commands fire events which are referenced by scene
 preconditions.  For example, \texttt{north} may
 trigger a scene which causes the activity to draw a new location on
 the page, causes the agent to write and speak a description of the new
-location, and which shifts the AIML topic to enable additional vocabulary
-suitable for the new location.
+location, and which causes a shift in the AIML \textit{topic} to
+enable additional vocabulary suitable for the new location.
 
 % xx can the activity influence which commands are active?
 % yes, by shifting the topic.  AIML should have a more flexible
@@ -542,15 +545,16 @@ suitable for the new location.
 \subsection{TurtleScript}\label{sec:turtles}
 
 We have developed a block-oriented view of JavaScript, which we call
-TurtleScript~\cite{turtlescript}.  This allows us to use
-the TurtleScript view of JavaScript as the single
+TurtleScript~\cite{turtlescript}.
+The TurtleScript view of JavaScript is the single
 implementation language for Nell.  TurtleScript scales from Logo-like
 pedagogical tasks (in subsets of the language) up to the
 implementation of TurtleScript and the
-Nell system itself.  TurtleScript's block view is isomorphic to
+Nell system itself.  As Figure~\ref{fig:turtlescript} shows,
+TurtleScript's block view is isomorphic to
 JavaScript's standard textual
 representation to preserve the code-reading skills of existing
-programmers (Figure~\ref{fig:turtlescript}).  We have begun implementation of a
+programmers.  We have begun implementation of a
 tablet programming environment for TurtleScript which uses
 drag-and-drop, direct interaction, and intelligent prompting to reduce
 text entry requirements.
@@ -567,7 +571,7 @@ as their capabilities allow.  Although the operating system and the
 browser implementation remain inaccessible, incorporating a
 meta-circular interpreter for JavaScript (such as \cite{narcissus}) allows us
 to expose the system all the way down to the programming
-language implementation,
+language implementation.
 % Via TurtleScript, this code is all visible in a
 % friendly block-based form.
 
@@ -579,13 +583,14 @@ language implementation,
 \section{Related work}\label{sec:related}
 
 The TinkRBook system~\cite{chang:tinkrbook} shares a similar focus on
-personalization and literacy.  Nell attempts to scale these
+personalization and literacy.  Nell attempts to scale up these
 ideas with a modular extensible narrative system and a broader range
 of pedagogic material.
 
 The Sugar Learning Platform~\cite{sugar} is an earlier effort at
-child education.  We've learned directly from this effort.  Nell
-focuses on children even further from educational infrastructure.
+child education which we've been directly involved in.  Nell's focus is
+on children even further from educational infrastructure than those
+targeted by Sugar.
 The narrative at Nell's core attempts to provide students additional
 pedagogical guidance, and the direct interaction model avoids keyboard
 problems which have plagued Sugar's initial deployments.  Nell also
@@ -604,16 +609,17 @@ customization.
 % a modular \textit{Narrative Interface}~\cite{bizzocchi:narrative,don:narrative}.
 
 Automatic narrative generation has seen attention in
-gaming, simulation, and training contexts~\cite{riedl:2008}.  Nell's
-use of these ideas in a pedagogical context is unique.
+gaming, simulation, and training contexts~\cite{riedl:2008}.
+We believe
+Nell's use of these ideas in a pedagogical context is unique.
 
 \section{Conclusions}
 We have described the design of a novel narrative direct-interface
 system for teaching literacy, which is personalized for and grows with
 its child owner.  Personalized direct interface engages the child, and
 narrative guides them through the pedagogic material.  The low-cost
-solar-powered hardware allows Nell to reach further into the
-least-developed areas of the world, to help those far from traditional
+solar-powered deployment hardware allows Nell to reach further into the
+least-developed areas of the world to help those without traditional
 educational infrastructure.
 
 We are in the process of implementing the Nell system, and expect to
