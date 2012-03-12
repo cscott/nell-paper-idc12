@@ -425,31 +425,34 @@ the day's lesson at the start of class.
 
 Story modules can be inherited and extended, as shown in the figure.
 This makes it easy to take an existing story and modify it to
-better suit particular interests or a particular type of learner, or
+better suit particular interests, a particular type of learner---or
 just to add variety.  This can lead to conflicts: multiple versions of
-a story, or variant scenes within a story, may have their
+a story, or scenes within a story, may have their
 preconditions satisfied simultaneously.
 
 Conflicts are resolved by consulting a \textit{group} associated with
 each scene.  Each group has a default priority and names a scene to be
 invoked when a conflict exists; the actions associated with that scene
-will temporarily alter the priorities of the conflicting scenes to
-resolve the conflict.  For example, the \textit{story-intro-group}
-used in Fig.~\ref{fig:rules} defaults to a lower priority, such that
-continuing a story in progress is preferred to beginning a new scene.
-The resolution scene for \textit{story-intro-group} may be part of its
-own story: for example, it may bring us to the controls of a magic airship
-which allows us to pilot between locations corresponding to the
-various story continuations.  Selecting a destination location bumps
-the priority of the given scene allowing us to transition to it
-without further conflict.
+will (eventually) alter the priorities of the conflicting scenes to
+resolve the conflict.  The resolution scene may include any number of
+actions.  It may select randomly, or based a selection on
+child preferences, curriculum progress, or inferred learning style.
+The resolution scene may even initiate a new multi-scene story.
 
-Other rule groups may invoke random selection or select between stories
-based on child preferences, curriculum, or inferred learning style.
+For example, the \textit{story-intro-group}
+used in Figure~\ref{fig:rules} defaults to a low priority so that
+continuing a story in progress is preferred over starting a new story.
+When the story in progress is complete, several new story openers will be in
+conflict.  The resolution scene for \textit{story-intro-group} brings us
+to the controls of a magic airship which flies between locations
+corresponding to the various story continuations.  Eventually the
+child decides to fly to Mathland to hear the next episode in her
+agent Mathis' adventure, and that episode's priority is bumped to
+allow us to transition to it without further conflict.
 
-Nell's integrated story editor has not yet been implemented.  Its
-design is patterned after the Wide Ruled authoring tool, which was
-successfully used by non-technical story creators~\cite{skorupski:2009}.
+We plan to write an integrated story editor for Nell.  Our model will
+be the Wide Ruled authoring tool, which was successfully used by
+non-technical story creators~\cite{skorupski:2009}.
 
 % excerpt of story model
 % rete algorithm, cite Riedl, etc.
