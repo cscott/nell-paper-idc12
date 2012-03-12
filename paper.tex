@@ -318,31 +318,46 @@ by the students themselves.
 %  2. turtlescript -- metacircular understanding of the system itself
 %  3. community -- no limit to content creation, including by the child.
 
-Children grow. To accommodate them, Nell provides a ``low floor and
-no ceiling.''  A very simple base system provides the low
-floor, usable with no literacy skills or
-external guidance.  The serial progression of story modules grows with
-the child to tackle topics of increasing difficulty.
-Later, the ability for third
-parties to independently author story modules ensures that
-Nell can continue to grow.  Finally, there are no external dependencies
-limiting a child's ability to participate in this process: a Nell
-system contains a story editor and everything necessary to
+Children grow.  Nell aims to provide a ``low floor and no ceiling'' to
+grow with them, along three main axes.
+%There are three main axes of growth.
+%  Nell's low floor is its
+%simple base system,
+%usable with no literacy skills or external guidance.
+%From there Nell grows in three directions.
+
+First, Nell tracks the child's growing intelligence and capability
+with increasingly challenging story material.  As the child
+accumulates achievements and demonstrates
+proficiency, the serial story moves on to more advanced topics.
+
+Second, Nell seeks to grow its authoring community.  Decentralized
+authorship ensures that Nell's instructional content
+will continue to grow, with an increasing number of topics and
+customizations.  There are no
+ceilings barring a child from participating: Nell
+contains a story editor and everything necessary to
 author and publish story modules.
 
-We also seek to eliminate the ``ceiling'' between the children and
-the authors of the Nell system itself.  Nell should be capable of
-teaching about itself, and a capable child can dive into Nell's source
-code and make meaningful changes.
+To further promote collaboration
+Nell is implemented in standard Web technologies (HTML5,
+WebGL, and JavaScript) with offline caching.
+Resources are named by URL, even when disconnected from the
+internet, which simplifies the distribution of updates to story modules and
+the Nell system.  URL-based naming allows third parties
+to manage their own namespaces when extending Nell.
+
+Finally, Nell is designed to allow a capable child to learn
+the construction of the system itself,
+eliminating the ceiling between the child and
+the authors of the Nell system.  Nell can teach
+about itself, and its source code is open for exploration within Nell.
+Meaningful changes can be performed without external tools.
+
+%.  Meaningful changes to the Nell system can
+%be performed on the system itself.
 %In Section~\ref{sec:turtles} we describe how this goal is approached.
 
-%%% XXX INTEGRATE THIS SECTION XXX
-Nell is implemented in standard Web technologies, including HTML5,
-WebGL, and JavaScript, with extensive use of offline caching.
-Resources are named by URL, even when disconnected from the
-internet.  This allows third parties to manage their own namespaces
-when extending Nell, and simplifies updates to story modules and
-the Nell system itself.
 %As far as possible, Nell is implemented in JavaScript.
 % if the kid's going to learn some software stack, this seem like a
 % fine one to learn
