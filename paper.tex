@@ -538,10 +538,12 @@ Princess and other agents within Nell.
       template: js`FireEvent(Chat, "OPEN DOOR")` }
   ] } }
 \end{verbatim}
-\caption{An AIML fragment which recognizes the commands \texttt{N},
+\caption{An AIML fragment which recognizes the commands
+  %\texttt{N},
   \texttt{North}, \texttt{Go North}, \texttt{Open the squeaky door}
-  and variants.  AIML's XML format has been translated to JSON.
-  Template contents in braces invoke the recognizer recursively.
+  and variants.  AIML's XML syntax has been translated to JSON.
+  Template contents in braces invoke the recognizer recursively
+  (what AIML calls \texttt{<srai>}).
 % XXX: how to handle multiple stars?  In XML, it's <star index="1">
 }\label{fig:aiml}
 \end{figure}
@@ -555,6 +557,8 @@ AliceBot.%
   diversity of third-party implementations make it our choice at present.}
 Each story module can include AIML fragments extending the
 conversational capabilities of Nell's agents.
+% we say this in the figure, don't repeat it here? ==>
+%    We have translated AIML's XML-based syntax to JSON.
 
 Figure~\ref{fig:aiml}
 shows an AIML fragment augmenting an agent with
@@ -578,7 +582,11 @@ enable additional vocabulary suitable for the new location.
 We have developed a block-oriented view of JavaScript, which we call
 TurtleScript~\cite{turtlescript}.
 The TurtleScript dialect of JavaScript is the single
-implementation language for Nell.  TurtleScript scales from Logo-like
+implementation language for Nell.%
+\footnote{Since JSON is the data-oriented subset of JavaScript,
+our examples in Figures~\ref{fig:rules} and \ref{fig:aiml} are valid
+TurtleScript.} % XXX: use TurtleScript tiles for the figures?
+TurtleScript scales from Logo-like
 pedagogical tasks (in subsets of the language) up to the
 implementation of TurtleScript and the
 Nell system itself.  As Figure~\ref{fig:turtlescript} shows,
