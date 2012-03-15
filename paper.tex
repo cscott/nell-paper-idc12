@@ -538,6 +538,12 @@ Princess and other agents within Nell.
       template: js`FireEvent(Chat, "OPEN DOOR")` }
   ] } }
 \end{verbatim}
+% alternate template syntax, compatible w/ quasiquote but not
+% dependent on it:
+% template: "${srai(star(0))}" // can be abbreviated as srai(star()) or srai()
+% template: "${srai("NORTH"}}"
+% template: "${FireEvent(Chat, "NORTH")}"
+% template: "${srai()} DOOR" // abbreviation for srai(star(0))
 \caption{An AIML fragment which recognizes the commands
   %\texttt{N},
   \texttt{North}, \texttt{Go North}, \texttt{Open the squeaky door}
