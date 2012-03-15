@@ -521,28 +521,29 @@ Princess and other agents within Nell.
 
 \begin{figure}\small
 \begin{verbatim}
-<aiml version="1.0">
-<category>
- <pattern>GO *</pattern>
- <template><srai><star/></srai></template>
-</category>
-
-<category>
- <pattern>N</pattern>
- <template><srai>NORTH</srai></template>
-</category>
-
-<category>
- <pattern>NORTH</pattern>
- <template>
-  <javascript>FireEvent(Chat, "North")</javascript>
- </template>
-</category>
-</aiml>
+{ aiml: {
+  version: "1.0",
+  categories: [
+    { pattern: "GO *",
+      template: "{*}" },
+    { pattern: "N",
+      template: "{NORTH}" },
+    { pattern: "NORTH",
+      template: js`FireEvent(Chat, "NORTH")` },
+    { pattern: "* THE DOOR",
+      template: "{*} DOOR" },
+    { pattern: "* SQUEAKY DOOR",
+      template: "{*} DOOR" },
+    { pattern: "OPEN DOOR",
+      template: js`FireEvent(Chat, "OPEN DOOR")` }
+  ] } }
 \end{verbatim}
 \caption{An AIML fragment which recognizes the commands \texttt{N},
-  \texttt{North}, and \texttt{Go North}. The \texttt{<srai>} tag invokes the
-  recognizer recursively.}\label{fig:aiml}
+  \texttt{North}, \texttt{Go North}, \texttt{Open the squeaky door}
+  and variants.  AIML's XML format has been translated to JSON.
+  Template contents in braces invoke the recognizer recursively.
+% XXX: how to handle multiple stars?  In XML, it's <star index="1">
+}\label{fig:aiml}
 \end{figure}
 
 Our implementation extends AIML~\cite{aiml:2005},
