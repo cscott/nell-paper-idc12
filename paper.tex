@@ -6,12 +6,11 @@
 % you need to 'insert'  your .bbl file into your source .tex file so as to provide
 % ONE 'self-contained' source file.
 %\documentclass{acm_proc_article-sp}
-\documentclass[preprint]{sig-alternate}
+\documentclass{sig-alternate}
 \usepackage{url}
-\usepackage{ifthen}\newboolean{noauthors}\setboolean{noauthors}{false}
 \hyphenation{Web-GL Java-Script Turtle-Script infra-structure}
 
-\begin{document}\toappear{}
+\begin{document}
 
 \title{Growing Up With Nell: A Narrative Interface for Literacy}
 %
@@ -39,7 +38,6 @@
 % without further effort on your part as the last section in
 % the body of your article BEFORE References or any Appendices.
 
-\ifthenelse{\boolean{noauthors}}{}{
 \numberofauthors{1}
 \author{
 % You can go ahead and credit any number of authors here,
@@ -62,15 +60,18 @@ Now at Akamai Technologies.}\\
 \email{\{cscott,cjb,mstone\}@laptop.org}
 %\and  % use '\and' if you need 'another row' of author names
 }
-}
 \date{12 March 2012}
 % Just remember to make sure that the TOTAL number of authors
 % is the number that will appear on the first page PLUS the
 % number that will appear in the \additionalauthors section.
 
+\conferenceinfo{IDC 2012,}{June 12--15, 2012, Bremen, Germany}
+\CopyrightYear{2012}
+\crdata{978-1-4503-1007-9}
+
 % Copyright info
-\toappear{\textit{IDC 2012}, June 12--15, 2012, Bremen, Germany.\\
-Copyright 2012 ACM 978-1-4503-1007-9\ldots\$10.00.}
+%\toappear{\textit{IDC 2012}, June 12--15, 2012, Bremen, Germany.\\
+%Copyright 2012 ACM 978-1-4503-1007-9\ldots\$10.00.}
 
 \maketitle
 
