@@ -416,28 +416,28 @@ section we describe the technologies that enable Nell's four key ideas.
 \subsection{Rule-based story modules}
 \begin{figure}\small
 \begin{verbatim}
-{ world: { // id gives canonical URL for this module
-    id: "/nell.laptop.org/chapters/alphabet-book",
-    scene: "opening", // initial scene
-    inherit_from: "/nell.laptop.org/core/drawing_activity",
-  }, scenes: [
-    { id: "opening", subject: "actors/princess",
-      verb: "speak", object: "actors/user",
-      text: "Hello! Would (o/2) like to hear a story?",
-      group: "/nell.laptop.org/core/story-intro-group",
+{ "world": { // id gives canonical URL for this module
+    "id": "/nell.laptop.org/chapters/alphabet-book",
+    "scene": "opening", // initial scene
+    "inherit_from": "/nell.laptop.org/core/drawing_activity",
+  }, "scenes": [
+    { "id": "opening", subject: "actors/princess",
+      "verb": "speak", object: "actors/user",
+      "text": "Hello! Would (o/2) like to hear a story?",
+      "group": "/nell.laptop.org/core/story-intro-group",
     },
-    { id: "story-1",
-      cond: rule`At(opening) && Event(Chat, Yes)`,
-      subject: "actors/princess",
-      verb: "speak", object: "actors/user",
-      text: "Once upon a time..." },
+    { "id": "story-1",
+      "cond": rule`At(opening) && Event(Chat, Yes)`,
+      "subject": "actors/princess",
+      "verb": "speak", object: "actors/user",
+      "text": "Once upon a time..." },
     ...
-    { id: "r-drawn",
-      cond: rule`Event(Activity, DrawR)`,
-      subject: "actors/princess",
-      verb: "speak", object: "actors/user",
-      text: "Very good, (o/3)!",
-      action: js`startAnimation("r-runs")` }, ...
+    { "id": "r-drawn",
+      "cond": rule`Event(Activity, DrawR)`,
+      "subject": "actors/princess",
+      "verb": "speak", object: "actors/user",
+      "text": "Very good, (o/3)!",
+      "action": js`startAnimation("r-runs")` }, ...
   ], ... }
 \end{verbatim}
 \caption{Excerpt of story module.  JSON syntax has been extended with
@@ -525,21 +525,21 @@ Princess and other agents within Nell.
 
 \begin{figure}\small
 \begin{verbatim}
-{ aiml: {
-  version: "1.0",
-  categories: [
-    { pattern: "GO *",
-      template: "{*}" },
-    { pattern: "N",
-      template: "{NORTH}" },
-    { pattern: "NORTH",
-      template: js`FireEvent(Chat, "NORTH")` },
-    { pattern: "* THE DOOR",
-      template: "{*} DOOR" },
-    { pattern: "* SQUEAKY DOOR",
-      template: "{*} DOOR" },
-    { pattern: "OPEN DOOR",
-      template: js`FireEvent(Chat, "OPEN DOOR")` }
+{ "aiml": {
+  "version": "1.0",
+  "categories": [
+    { "pattern": "GO *",
+      "template": "{*}" },
+    { "pattern": "N",
+      "template": "{NORTH}" },
+    { "pattern": "NORTH",
+      "template": js`FireEvent(Chat, "NORTH")` },
+    { "pattern": "* THE DOOR",
+      "template": "{*} DOOR" },
+    { "pattern": "* SQUEAKY DOOR",
+      "template": "{*} DOOR" },
+    { "pattern": "OPEN DOOR",
+      "template": js`FireEvent(Chat, "OPEN DOOR")` }
   ] } }
 \end{verbatim}
 % alternate template syntax, compatible w/ quasiquote but not
